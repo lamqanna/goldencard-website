@@ -2,94 +2,115 @@ import marketingContent from "@/marketing-content.json";
 
 import type { Locale } from "@/lib/i18n";
 
-type MarketingContent = typeof marketingContent;
-
-type LocaleContent = MarketingContent[Locale];
-
-type SeoSection = LocaleContent["seo_metadata"];
-
-type HeroVariant = LocaleContent["home"]["hero_variants"][number];
-
-type SectionContent = LocaleContent["home"]["sections"][keyof LocaleContent["home"]["sections"]];
-
-type ServiceContent = LocaleContent["services"][keyof LocaleContent["services"]];
-
-type GoldenEnergyContent = LocaleContent["goldenenergy"];
-
-type Microcopy = LocaleContent["tone_style_guide"]["microcopy_samples"];
-
-type ContactSection = LocaleContent["home"]["sections"]["contact_quote"];
-
-type SitewideContent = LocaleContent["sitewide"];
-
-export function getLocaleContent(locale: Locale): LocaleContent {
-  return marketingContent[locale];
-}
-
 function withFallback<T>(viValue: T | undefined, enValue: T): T {
   return (viValue ?? enValue) as T;
 }
 
-export function getSitewide(locale: Locale): SitewideContent {
-  if (locale === "vi") {
-    return withFallback(getLocaleContent("vi").sitewide, getLocaleContent("en").sitewide);
+export function getSitewide(locale: Locale) {
+  // Extract trust lines from hero section as sitewide trust points
+  const home = marketingContent.home;
+  const viHero = home.vi?.hero;
+  const enHero = home.en?.hero;
+  
+  const hero = locale === "vi" ? withFallback(viHero, enHero) : enHero;
+  
+  return {
+    company_name: "GoldenCard",
+    tagline: locale === "vi" 
+      ? "Giải pháp thẻ thông minh và năng lượng xanh"
+      : "Smart Card and Green Energy Solutions",
+    trust_lines: hero?.trust_bullets || []
+  };
+}
+
+export function getHomeHero(locale: Locale) {
+  const home = marketingContent.home;
+  const viHero = home.vi?.hero;
+  const enHero = home.en?.hero;
+  return locale === "vi" ? withFallback(viHero, enHero) : enHero;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function getHomeSections(locale: Locale): any {
+  const home = marketingContent.home;
+  const viSections = home.vi?.sections ?? {};
+  const enSections = home.en?.sections ?? {};
+
+  if (locale === "en") {
+    return enSections;
   }
-  return getLocaleContent("en").sitewide;
+
+  return { ...enSections, ...viSections };
 }
 
-export function getHomeHero(locale: Locale): HeroVariant {
-  const heroVi = getLocaleContent("vi").home.hero_variants?.[0];
-  const heroEn = getLocaleContent("en").home.hero_variants?.[0];
-  return locale === "vi" ? withFallback(heroVi, heroEn) : (heroEn as HeroVariant);
-}
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function getServices(locale: Locale): any {
+  const services = marketingContent.services;
+  const viServices = services?.vi ?? {};
+  const enServices = services?.en ?? {};
 
-export function getHomeSections(locale: Locale): Record<string, SectionContent> {
-  const viSections = getLocaleContent("vi").home.sections as Record<string, SectionContent>;
-  const enSections = getLocaleContent("en").home.sections as Record<string, SectionContent>;
-  if (locale === "en") return enSections;
-  // merge VI-first with EN fallback paragraph-wise where needed
-  const merged: Record<string, SectionContent> = {};
-  for (const key of Object.keys({ ...enSections, ...viSections })) {
-    const vi = viSections[key];
-    const en = enSections[key];
-    merged[key] = (vi ?? en) as SectionContent;
+  if (locale === "en") {
+    return enServices;
   }
-  return merged;
+
+  return { ...enServices, ...viServices };
 }
 
-export function getServices(locale: Locale): Record<string, ServiceContent> {
-  const vi = getLocaleContent("vi").services as Record<string, ServiceContent>;
-  const en = getLocaleContent("en").services as Record<string, ServiceContent>;
-  if (locale === "en") return en;
-  const merged: Record<string, ServiceContent> = {};
-  for (const key of Object.keys({ ...en, ...vi })) {
-    merged[key] = (vi[key] ?? en[key]) as ServiceContent;
-  }
-  return merged;
-}
-
-export function getGoldenEnergy(locale: Locale): GoldenEnergyContent {
-  const vi = getLocaleContent("vi").goldenenergy;
-  const en = getLocaleContent("en").goldenenergy;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function getGoldenEnergy(locale: Locale): any {
+  const ge = marketingContent.goldenenergy;
+  const vi = ge?.vi;
+  const en = ge?.en;
   return locale === "vi" ? withFallback(vi, en) : en;
 }
 
-export function getSeoSection(locale: Locale, key: keyof SeoSection) {
-  const vi = getLocaleContent("vi").seo_metadata[key];
-  const en = getLocaleContent("en").seo_metadata[key];
+type BasicSeo = {
+  title?: string;
+  meta_description?: string;
+  og_description?: string;
+  image_alt?: string;
+};
+
+export function getSeoSection(locale: Locale, page: string): BasicSeo {
+  const baseTitle = "GoldenCard";
+  const descriptions: Record<Locale, string> = {
+    vi: "Giải pháp thẻ thông minh, dịch vụ CNTT và năng lượng mặt trời cho doanh nghiệp Việt.",
+    en: "Smart card manufacturing, IT services, and solar energy solutions for modern enterprises.",
+  };
+  const pageLabels: Record<string, Record<Locale, string>> = {
+    home: { vi: "GoldenCard", en: "GoldenCard" },
+    services: { vi: "GoldenCard — Dịch vụ", en: "GoldenCard — Services" },
+    goldenenergy: { vi: "GoldenEnergy", en: "GoldenEnergy" },
+    contact: { vi: "GoldenCard — Liên hệ", en: "GoldenCard — Contact" },
+    about: { vi: "GoldenCard — Về chúng tôi", en: "GoldenCard — About" },
+  };
+
+  const label = pageLabels[page]?.[locale] ?? baseTitle;
+
+  return {
+    title: label,
+    meta_description: descriptions[locale],
+    og_description: descriptions[locale],
+    image_alt: label,
+  };
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function getContactSection(locale: Locale): any {
+  const contact = marketingContent.contact;
+  const vi = contact?.vi;
+  const en = contact?.en;
   return locale === "vi" ? withFallback(vi, en) : en;
 }
 
-export function getMicrocopy(locale: Locale): Microcopy {
-  const vi = getLocaleContent("vi").tone_style_guide.microcopy_samples;
-  const en = getLocaleContent("en").tone_style_guide.microcopy_samples;
-  return locale === "vi" ? withFallback(vi, en) : en;
-}
+export function getAboutContent(locale: Locale) {
+  const about = marketingContent.about;
+  const vi = about?.vi;
+  const en = about?.en;
 
-export function getContactSection(locale: Locale): ContactSection {
-  const sectionsVi = getLocaleContent("vi").home.sections;
-  const sectionsEn = getLocaleContent("en").home.sections;
-  const vi = sectionsVi.contact_quote as ContactSection | undefined;
-  const en = sectionsEn.contact_quote as ContactSection;
-  return locale === "vi" ? withFallback(vi, en) : en;
+  const hero = locale === "vi" ? (vi?.hero ?? en?.hero) : (en?.hero ?? vi?.hero);
+  const values = locale === "vi" ? (vi?.values ?? en?.values) : (en?.values ?? vi?.values);
+  const imageAlts = locale === "vi" ? (vi?.image_alts ?? en?.image_alts) : (en?.image_alts ?? vi?.image_alts);
+
+  return { hero, values, imageAlts };
 }

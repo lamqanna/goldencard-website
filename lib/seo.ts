@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { getSeoSection } from "@/lib/content";
 import type { Locale } from "@/lib/i18n";
 
-type PageKey = "home" | "services" | "goldenenergy" | "contact";
+type PageKey = "home" | "services" | "goldenenergy" | "contact" | "about";
 
 const pageTitles = {
   vi: {
@@ -11,12 +11,14 @@ const pageTitles = {
     services: "GoldenCard — Dịch vụ",
     goldenenergy: "GoldenEnergy",
     contact: "GoldenCard — Liên hệ",
+    about: "GoldenCard — Về chúng tôi",
   },
   en: {
     home: "GoldenCard",
     services: "GoldenCard — Services",
     goldenenergy: "GoldenEnergy",
     contact: "GoldenCard — Contact",
+    about: "GoldenCard — About",
   },
 } satisfies Record<Locale, Record<PageKey, string>>;
 
@@ -64,6 +66,8 @@ function slugFor(key: PageKey) {
       return "services/goldenenergy";
     case "contact":
       return "contact";
+    case "about":
+      return "about";
     default:
       return "";
   }

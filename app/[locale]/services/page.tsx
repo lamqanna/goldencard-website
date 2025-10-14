@@ -22,59 +22,61 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
   const { locale: localeParam } = await params;
   const locale = normalizeLocale(localeParam);
   const services = getServices(locale);
+  const hero = services?.hero;
+  const highlights = services?.service_highlights ?? {};
 
   const cards = [
     {
-      key: "magnetic_card",
-      title: locale === "vi" ? "Thẻ từ" : "Magnetic Cards",
-      ...services.magnetic_card,
-      benefitsLabel: locale === "vi" ? "Lợi ích" : "Key benefits",
-      technicalLabel: locale === "vi" ? "Đặc điểm kỹ thuật" : "Technical focus",
+      key: "magnetic_cards",
+      title: highlights.magnetic_cards?.headline ?? (locale === "vi" ? "Thẻ từ" : "Magnetic Cards"),
+      benefits: highlights.magnetic_cards?.short_benefits ?? [],
+      benefitsLabel: locale === "vi" ? "Lợi ích nổi bật" : "Key benefits",
     },
     {
-      key: "bank_card",
-      title: locale === "vi" ? "Thẻ ngân hàng" : "Bank Cards",
-      ...services.bank_card,
-      benefitsLabel: locale === "vi" ? "Lợi ích" : "Key benefits",
-      technicalLabel: locale === "vi" ? "Đặc điểm kỹ thuật" : "Technical focus",
+      key: "bank_cards",
+      title: highlights.bank_cards?.headline ?? (locale === "vi" ? "Thẻ ngân hàng" : "Bank Cards"),
+      benefits: highlights.bank_cards?.short_benefits ?? [],
+      benefitsLabel: locale === "vi" ? "Lợi ích nổi bật" : "Key benefits",
     },
     {
       key: "it_services",
-      title: locale === "vi" ? "Giải pháp CNTT" : "IT Services",
-      ...services.it_services,
-      benefitsLabel: locale === "vi" ? "Lợi ích" : "Key benefits",
-      technicalLabel: locale === "vi" ? "Đặc điểm kỹ thuật" : "Technical focus",
+      title: highlights.it_services?.headline ?? (locale === "vi" ? "Giải pháp CNTT" : "IT Services"),
+      benefits: highlights.it_services?.short_benefits ?? [],
+      benefitsLabel: locale === "vi" ? "Lợi ích nổi bật" : "Key benefits",
     },
     {
       key: "solar_solutions",
-      title: locale === "vi" ? "Giải pháp năng lượng mặt trời" : "Solar Solutions",
-      ...services.solar_solutions,
-      benefitsLabel: locale === "vi" ? "Lợi ích" : "Key benefits",
-      technicalLabel: locale === "vi" ? "Đặc điểm kỹ thuật" : "Technical focus",
+      title: highlights.solar_solutions?.headline ?? (locale === "vi" ? "Giải pháp năng lượng mặt trời" : "Solar Solutions"),
+      benefits: highlights.solar_solutions?.short_benefits ?? [],
+      benefitsLabel: locale === "vi" ? "Lợi ích nổi bật" : "Key benefits",
     },
   ];
 
   return (
     <Container className="space-y-16 py-16 sm:py-20">
       <Section
-        title={locale === "vi" ? "Dịch vụ chiến lược" : "Strategic Services"}
-        description={
-          locale === "vi"
-            ? "GoldenCard cung cấp giải pháp trọn gói từ sản xuất thẻ đến triển khai hệ thống CNTT và vận hành điện mặt trời."
-            : "GoldenCard delivers end-to-end services—from secure card production to bespoke IT platforms and solar deployment."
-        }
+        title={hero?.headline ?? (locale === "vi" ? "Dịch vụ chiến lược" : "Strategic Services")}
+        description={hero?.subheadline}
         className="border-b-0 pb-0"
-      />
+      >
+        {hero?.trust_bullets ? (
+          <ul className="mt-6 space-y-3 text-sm text-foreground/80 md:text-base">
+            {hero.trust_bullets.map((bullet: string) => (
+              <li key={bullet} className="flex items-start gap-2">
+                <span className="mt-1.5 inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                <span>{bullet}</span>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+      </Section>
       <div className="grid gap-6 md:grid-cols-2">
         {cards.map((card) => (
           <ServiceCard
             key={card.key}
             title={card.title}
-            summary={card.summary}
             benefits={card.benefits}
-            technicalPoints={card.technical_points}
             benefitsLabel={card.benefitsLabel}
-            technicalLabel={card.technicalLabel}
           />
         ))}
       </div>
