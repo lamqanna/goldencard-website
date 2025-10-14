@@ -1,0 +1,44 @@
+import type { ReactNode } from "react";
+import { notFound } from "next/navigation";
+
+import { Footer } from "@/components/Footer";
+import { LocaleLangSetter } from "@/components/locale-lang-setter";
+import { Navbar } from "@/components/Navbar";
+import { getSitewide } from "@/lib/content";
+import { defaultLocale, locales, type Locale } from "@/lib/i18n";
+import { getPrimaryNavigation } from "@/lib/navigation";
+
+interface LocaleLayoutProps {
+  children: ReactNode;
+  params: Promise<{ locale: string }>;
+}
+
+export function generateStaticParams(): Array<{ locale: Locale }> {
+  return locales.map((locale) => ({ locale })) as Array<{ locale: Locale }>;
+}
+
+export default async function LocaleLayout({
+  children,
+  params,
+}: LocaleLayoutProps) {
+  const { locale: localeParam } = await params;
+  const candidate = localeParam ?? defaultLocale;
+  if (!locales.includes(candidate as Locale)) {
+    notFound();
+  }
+
+  const locale = candidate as Locale;
+  const sitewide = getSitewide(locale);
+  const navItems = getPrimaryNavigation(locale);
+
+  return (
+    <>
+      <LocaleLangSetter locale={locale} />
+      <div className="flex min-h-screen flex-col bg-background text-foreground">
+        <Navbar locale={locale} navItems={navItems} tagline={sitewide.tagline} />
+        <main className="flex-1">{children}</main>
+        <Footer locale={locale} navItems={navItems} trustLines={sitewide.trust_lines} />
+      </div>
+    </>
+  );
+}

@@ -1,0 +1,174 @@
+{
+  "tech_stack": {
+    "framework": "Next.js",
+    "version": "14.x (App Router)",
+    "language": "TypeScript 5.x",
+    "styling": "Tailwind CSS 3.x",
+    "animation": "Framer Motion 11.x",
+    "cms": "Sanity v2024-10 (optional)",
+    "testing": ["Playwright 1.48+ (e2e)", "Vitest/Jest (unit)", "Testing Library"],
+    "lint_format": ["ESLint", "Prettier"],
+    "analytics": ["Vercel Analytics (optional)", "GA4"],
+    "i18n": "Next.js built-in i18n routing (vi default, en secondary)"
+  },
+  "project_structure": {
+    "root": {
+      "files": [
+        "next.config.mjs",
+        "tailwind.config.js",
+        "postcss.config.js",
+        "tsconfig.json",
+        "package.json",
+        ".eslintrc.cjs",
+        ".prettierrc",
+        "marketing-content.json",
+        "project-plan.json",
+        "README.md"
+      ],
+      "app_router_tree": "app/",
+      "public_assets": "public/"
+    },
+    "app": {
+      "i18nRoutes": ["/vi", "/en"],
+      "routes": [
+        { "path": "/(locale)/", "role": "Home page; reads content by locale vi/en" },
+        { "path": "/(locale)/services", "role": "Services overview + service sections" },
+        { "path": "/(locale)/goldenenergy", "role": "GoldenEnergy subsite landing" },
+        { "path": "/(locale)/contact", "role": "Contact/Quote form" },
+        { "path": "/api/contact", "role": "API route for form submission (email/CRM hook)" }
+      ],
+      "shared": {
+        "components": [
+          "Navbar.tsx",
+          "Hero.tsx",
+          "ServiceCard.tsx",
+          "ProductGrid.tsx",
+          "CaseStudy.tsx",
+          "ContactForm.tsx",
+          "Footer.tsx",
+          "LocaleSwitcher.tsx",
+          "Container.tsx",
+          "Section.tsx"
+        ],
+        "lib": [
+          "content.ts (loader for marketing-content.json)",
+          "i18n.ts (locale helpers)",
+          "seo.ts (metadata builders)",
+          "analytics.ts (optional)"
+        ],
+        "styles": ["globals.css", "typography.css (optional)"]
+      }
+    }
+  },
+  "design_system": {
+    "colors": {
+      "primary": {
+        "50": "#FFFBEB",
+        "100": "#FEF3C7",
+        "200": "#FDE68A",
+        "300": "#FCD34D",
+        "400": "#F59E0B",
+        "500": "#D4AF37",
+        "600": "#B38E1F",
+        "700": "#8C6D12",
+        "800": "#6B4E0B",
+        "900": "#4A3507"
+      },
+      "neutrals": {
+        "white": "#FFFFFF",
+        "black": "#0B0B0C",
+        "50": "#F9FAFB",
+        "100": "#F3F4F6",
+        "200": "#E5E7EB",
+        "300": "#D1D5DB",
+        "400": "#9CA3AF",
+        "500": "#6B7280",
+        "600": "#4B5563",
+        "700": "#374151",
+        "800": "#1F2937",
+        "900": "#111827"
+      },
+      "accent": { "green": "#10B981", "blue": "#2563EB", "red": "#DC2626" }
+    },
+    "typography": {
+      "font_family": {
+        "heading": "\"Inter Tight\", system-ui, -apple-system, Segoe UI, Roboto, Arial, \"Noto Sans\", \"Liberation Sans\", sans-serif",
+        "body": "Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, \"Noto Sans\", \"Liberation Sans\", sans-serif"
+      },
+      "scale": {
+        "h1": "clamp(2.25rem, 2vw + 1.5rem, 3.5rem)",
+        "h2": "clamp(1.75rem, 1.5vw + 1rem, 2.5rem)",
+        "h3": "clamp(1.5rem, 1vw + 0.75rem, 2rem)",
+        "h4": "1.25rem",
+        "h5": "1.125rem",
+        "body": "1rem",
+        "small": "0.875rem"
+      }
+    },
+    "spacing": [0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 56, 64],
+    "components": [
+      { "name": "Navbar", "role": "Top navigation with locale switcher; sticky, translucent on scroll" },
+      { "name": "Hero", "role": "Page hero with headline, subheadline, CTA and subtle motion" },
+      { "name": "ServiceCard", "role": "Compact card with icon, title, bullets, link" },
+      { "name": "ProductGrid", "role": "Responsive grid of product/solution items" },
+      { "name": "CaseStudy", "role": "Case study highlight with KPI badges" },
+      { "name": "ContactForm", "role": "Form with validation, spam honeypot, and success/error states" },
+      { "name": "Footer", "role": "Global footer with contacts, social, legal, and language" }
+    ]
+  },
+  "sitemap_routing": {
+    "default_locale": "vi",
+    "locales": ["vi", "en"],
+    "paths": ["/(locale)/", "/(locale)/services", "/(locale)/goldenenergy", "/(locale)/contact"],
+    "goldenenergy_strategy": {
+      "path_option": "/goldenenergy",
+      "subdomain_option": "https://energy.goldencard.vn",
+      "rewrites": [
+        { "source": "/goldenenergy/:path*", "destination": "/(locale)/goldenenergy/:path*" }
+      ],
+      "recommendation": "Start with path-based for SEO consolidation and simpler ops; reserve subdomain for future scaling as distinct brand."
+    }
+  },
+  "perf_seo": {
+    "rendering": {
+      "home": "SSG + ISR(3600s)",
+      "services": "SSG + ISR(86400s)",
+      "goldenenergy": "SSG + ISR(86400s)",
+      "contact": "SSR (for CSRF token) or static with client action; cache-control private",
+      "api_contact": "Edge/Node function with rate limiting"
+    },
+    "seo": {
+      "metadata": "Use marketing-content.json; set title/description per locale; OpenGraph/Twitter; canonical per locale",
+      "structured_data": ["Organization", "Product", "Service", "BreadcrumbList", "FAQPage (optional)"],
+      "images": "Next/Image with AVIF/WebP; provide og:image per page"
+    },
+    "performance": {
+      "targets": { "LCP": "<2.0s", "CLS": "<0.05", "INP": "<200ms" },
+      "techniques": [
+        "Route segment-level code splitting",
+        "Preload key fonts via next/font",
+        "Hybrid image formats AVIF/WebP",
+        "cdn caching for static assets",
+        "Framer Motion reduced on prefers-reduced-motion"
+      ]
+    }
+  },
+  "accessibility_lighthouse": {
+    "a11y_rules": [
+      "Color contrast ratio >= 4.5:1 for text",
+      "Keyboard navigable components with focus states",
+      "ARIA labels for icons and interactive elements",
+      "Semantic HTML structure with landmarks (header, main, footer)",
+      "Form inputs with labels, descriptions, and error messaging",
+      "Respect prefers-reduced-motion"
+    ],
+    "lighthouse_targets": { "performance": 95, "accessibility": 100, "best_practices": 100, "seo": 100 }
+  },
+  "tailwind": {
+    "tailwind_config_snippet": "module.exports = {\n  darkMode: ['class'],\n  content: [\n    './app/**/*.{ts,tsx}',\n    './components/**/*.{ts,tsx}',\n    './pages/**/*.{ts,tsx}',\n    './content/**/*.{md,mdx}',\n  ],\n  theme: {\n    extend: {\n      colors: {\n        gold: {50: '#FFFBEB',100:'#FEF3C7',200:'#FDE68A',300:'#FCD34D',400:'#F59E0B',500:'#D4AF37',600:'#B38E1F',700:'#8C6D12',800:'#6B4E0B',900:'#4A3507'},\n        neutral: {50:'#F9FAFB',100:'#F3F4F6',200:'#E5E7EB',300:'#D1D5DB',400:'#9CA3AF',500:'#6B7280',600:'#4B5563',700:'#374151',800:'#1F2937',900:'#111827'}\n      },\n      fontFamily: {\n        heading: ['\\\"Inter Tight\\\"', 'system-ui', 'sans-serif'],\n        body: ['Inter', 'system-ui', 'sans-serif']\n      }\n    }\n  },\n  plugins: []\n}",
+    "global_css_vars": ":root{--gc-gold:#D4AF37;--gc-gold-600:#B38E1F;--gc-text:#111827;--gc-bg:#FFFFFF;--gc-muted:#6B7280;--gc-accent:#10B981;--radius:12px;}@media(prefers-color-scheme:dark){:root{--gc-text:#F9FAFB;--gc-bg:#0B0B0C;--gc-muted:#9CA3AF;}}"
+  },
+  "examples": {
+    "home_semantic_html": "<header>\n  <nav aria-label=\"Main\">...Navbar...</nav>\n  \n</header>\n<main>\n  <section id=\"hero\" aria-labelledby=\"hero-heading\">\n    <h1 id=\"hero-heading\">Giải pháp thẻ và năng lượng</h1>\n    <p>Subheadline...</p>\n    <div role=\"group\" aria-label=\"Primary actions\">\n      <a class=\"btn btn-primary\" href=\"#contact\">Nhận tư vấn</a>\n      <a class=\"btn btn-secondary\" href=\"/services\">Khám phá dịch vụ</a>\n    </div>\n  </section>\n  <section id=\"services\" aria-labelledby=\"services-heading\">\n    <h2 id=\"services-heading\">Dịch vụ</h2>\n    <div class=\"grid\">...ServiceCard...</div>\n  </section>\n  <section id=\"why\" aria-labelledby=\"why-heading\">\n    <h2 id=\"why-heading\">Vì sao chọn GoldenCard</h2>\n    <p>...</p>\n  </section>\n  <section id=\"products\" aria-labelledby=\"products-heading\">\n    <h2 id=\"products-heading\">Sản phẩm</h2>\n    <div class=\"grid\">...ProductGrid...</div>\n  </section>\n  <section id=\"case-studies\" aria-labelledby=\"case-studies-heading\">\n    <h2 id=\"case-studies-heading\">Dự án tiêu biểu</h2>\n    <article>...CaseStudy...</article>\n  </section>\n  <section id=\"contact\" aria-labelledby=\"contact-heading\">\n    <h2 id=\"contact-heading\">Liên hệ</h2>\n    <form aria-describedby=\"contact-desc\">\n      <p id=\"contact-desc\">Nhập thông tin để nhận tư vấn.</p>\n      ...ContactForm...\n    </form>\n  </section>\n</main>\n<footer>...Footer...</footer>"
+  }
+}
