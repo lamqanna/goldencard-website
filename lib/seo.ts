@@ -20,6 +20,13 @@ const pageTitles = {
     contact: "GoldenCard — Contact",
     about: "GoldenCard — About",
   },
+  zh: {
+    home: "GoldenCard",
+    services: "GoldenCard — 服务",
+    goldenenergy: "GoldenEnergy",
+    contact: "GoldenCard — 联系我们",
+    about: "GoldenCard — 关于我们",
+  },
 } satisfies Record<Locale, Record<PageKey, string>>;
 
 export function buildPageMetadata(locale: Locale, key: PageKey): Metadata {
@@ -52,6 +59,7 @@ export function buildPageMetadata(locale: Locale, key: PageKey): Metadata {
       languages: {
         vi: key === "home" ? "/vi" : `/vi/${slugFor(key)}`.replace(/\/$/, ""),
         en: key === "home" ? "/en" : `/en/${slugFor(key)}`.replace(/\/$/, ""),
+        zh: key === "home" ? "/zh" : `/zh/${slugFor(key)}`.replace(/\/$/, ""),
       },
       canonical: url,
     },

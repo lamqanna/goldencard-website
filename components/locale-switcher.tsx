@@ -9,23 +9,42 @@ interface LocaleSwitcherProps {
   locale: Locale;
 }
 
+const localeConfig = {
+  vi: { flag: "🇻🇳", label: "VI" },
+  en: { flag: "🇬🇧", label: "EN" },
+  zh: { flag: "🇨🇳", label: "中文" },
+} as const;
+
 export function LocaleSwitcher({ locale }: LocaleSwitcherProps) {
   const pathname = usePathname() ?? "/";
 
   return (
-    <div className="flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-muted-foreground">
-      {locales.map((candidate) => {
+    <div className="flex items-center gap-1 text-xs">
+      {locales.map((candidate, index) => {
         const isActive = candidate === locale;
         const target = buildSwitchPath(pathname, locale, candidate);
+        const config = localeConfig[candidate];
 
-        return isActive ? (
-          <span key={candidate} className="text-primary">
-            {candidate}
-          </span>
-        ) : (
-          <Link key={candidate} href={target} className="transition hover:text-primary">
-            {candidate}
-          </Link>
+        return (
+          <div key={candidate} className="flex items-center gap-1">
+            {isActive ? (
+              <span className="inline-flex items-center gap-1.5 rounded-lg bg-primary/10 px-2.5 py-1.5 font-medium text-primary">
+                <span className="text-base leading-none">{config.flag}</span>
+                <span className="tracking-wide">{config.label}</span>
+              </span>
+            ) : (
+              <Link 
+                href={target} 
+                className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 font-medium text-foreground/60 transition-all duration-200 hover:bg-primary/5 hover:text-primary"
+              >
+                <span className="text-base leading-none">{config.flag}</span>
+                <span className="tracking-wide">{config.label}</span>
+              </Link>
+            )}
+            {index < locales.length - 1 && (
+              <span className="text-border" aria-hidden="true">/</span>
+            )}
+          </div>
         );
       })}
     </div>

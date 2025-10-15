@@ -15,6 +15,13 @@ const navLabels: Record<Locale, Record<"home" | "services" | "goldenenergy" | "a
     about: "About",
     contact: "Contact",
   },
+  zh: {
+    home: "首页",
+    services: "服务",
+    goldenenergy: "GoldenEnergy",
+    about: "关于我们",
+    contact: "联系我们",
+  },
 };
 
 export interface NavItem {

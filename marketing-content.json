@@ -99,6 +99,56 @@
         "service_cards": "Illustrated diagram of core services: magnetic cards, bank cards, IT, and solar energy",
         "case_study_visual": "On-site photo of 1.5 MWp solar project at Binh Duong factory, showing panels on warehouse roof"
       }
+    },
+    "zh": {
+      "hero": {
+        "headline": "现代企业的智能卡和绿色能源解决方案",
+        "subheadline": "从国际认证的银行卡到节省成本的太阳能系统——GoldenCard 与企业携手实现可持续发展",
+        "trust_bullets": [
+          "20多家领先银行的可信合作伙伴",
+          "15年以上卡片生产和清洁能源专业经验",
+          "ISO 9001:2015认证——国际质量承诺",
+          "100多个成功项目，从芯片卡到大规模太阳能",
+          "24/7技术支持，明确的长期保修"
+        ],
+        "cta_variants": {
+          "primary_recommended": "获取免费咨询",
+          "primary_alt_1": "立即预约咨询",
+          "primary_alt_2": "申请报价",
+          "secondary_recommended": "探索服务",
+          "secondary_alt_1": "查看精选项目",
+          "secondary_alt_2": "了解更多"
+        }
+      },
+      "sections": {
+        "services_overview": {
+          "headline": "全面服务——从智能卡到绿色能源",
+          "description": "GoldenCard 将尖端技术与实践经验相结合，为所有业务需求提供符合国际标准的解决方案。",
+          "key_benefits": [
+            "高安全标准的 EMV 银行卡、磁条卡、芯片卡",
+            "根据业务工作流程定制的软件和 IT 系统",
+            "太阳能系统设计节省 30-50% 电费成本",
+            "专业工程团队始终掌握最新技术"
+          ]
+        },
+        "why_choose": {
+          "headline": "为什么选择 GoldenCard？",
+          "trust_points": [
+            "15年卓越产品质量带来的坚实声誉",
+            "战略合作伙伴——从咨询到维护全程支持",
+            "ISO 9001:2015确保严格的质量控制",
+            "客户包括领先的银行、企业和连锁酒店",
+            "准时交付、24/7支持、透明的保修政策"
+          ]
+        }
+      },
+      "image_alts": {
+        "hero_background": "智能卡技术和太阳能电池板的抽象图像，代表支付解决方案与绿色能源的融合",
+        "trust_badge_iso": "GoldenCard ISO 9001:2015 认证标志",
+        "trust_badge_partner": "银行合作伙伴徽章——超过20家大型银行信赖 GoldenCard",
+        "service_cards": "核心服务图解：磁条卡、银行卡、IT 和太阳能",
+        "case_study_visual": "平阳工厂1.5兆瓦太阳能项目现场照片，显示仓库屋顶上的电池板"
+      }
     }
   },
   "services": {
@@ -230,6 +280,71 @@
         "it_dashboard": "Modern management software interface with charts and intuitive dashboard",
         "solar_installation": "Solar panel system installed on factory roof, engineer inspecting",
         "service_comparison_chart": "Comparison chart showing benefits of GoldenCard service packages"
+      }
+    },
+    "zh": {
+      "hero": {
+        "headline": "战略服务——卡片、IT 和太阳能",
+        "subheadline": "GoldenCard 提供从高安全性卡片生产到 IT 系统部署和高效太阳能运营的端到端解决方案",
+        "trust_bullets": [
+          "符合 Visa、Mastercard 和 PCI-DSS 标准的 EMV 银行卡",
+          "具有可扩展微服务架构的定制 IT 软件",
+          "太阳能系统节省 30-50% 成本，5-7年回本期",
+          "25年电池板保修，10年逆变器，免费定期维护"
+        ],
+        "cta_variants": {
+          "primary_recommended": "获取详细报价",
+          "primary_alt_1": "立即咨询服务",
+          "primary_alt_2": "预约现场勘察",
+          "secondary_recommended": "查看样本项目",
+          "secondary_alt_1": "下载技术文档",
+          "secondary_alt_2": "比较服务"
+        }
+      },
+      "service_highlights": {
+        "magnetic_cards": {
+          "headline": "高质量磁条卡",
+          "short_benefits": [
+            "设计、颜色和印刷信息完全可定制",
+            "0.76mm PVC 材料符合 ISO 7810，兼容所有读卡器",
+            "HiCo/LoCo 编码，数据稳定存储10年以上",
+            "从100张到数百万张快速交付"
+          ]
+        },
+        "bank_cards": {
+          "headline": "国际认证银行卡",
+          "short_benefits": [
+            "符合 EMV、Visa、Mastercard 和 PCI 卡片生产安全标准",
+            "智能芯片，交易认证绝对安全",
+            "支持 NFC 便捷非接触支付",
+            "封闭式生产流程确保信息保密"
+          ]
+        },
+        "it_services": {
+          "headline": "定制 IT 解决方案",
+          "short_benefits": [
+            "专为每个企业的业务流程设计",
+            "微服务、云原生架构易于扩展",
+            "多层安全，数据加密和严格的访问控制",
+            "通过 RESTful API 无缝集成 ERP、CRM"
+          ]
+        },
+        "solar_solutions": {
+          "headline": "节省成本的太阳能系统",
+          "short_benefits": [
+            "第一年起节省 30-50% 电费",
+            "单晶 PERC 450W+ 电池板，效率>21%，热带气候优化",
+            "领先逆变器（SMA、Fronius、Huawei），效率>98%",
+            "5-7年回本，系统寿命25年以上"
+          ]
+        }
+      },
+      "image_alts": {
+        "magnetic_card_product": "定制设计和编码磁条的高级 PVC 磁条卡样品",
+        "bank_card_chip": "银行卡上 EMV 芯片的特写，展示高安全技术",
+        "it_dashboard": "现代管理软件界面，包含图表和直观仪表板",
+        "solar_installation": "工厂屋顶上安装的太阳能电池板系统，工程师正在检查",
+        "service_comparison_chart": "显示 GoldenCard 服务套餐优势的比较图表"
       }
     }
   },
@@ -369,6 +484,74 @@
         "shopping_mall_installation": "500 kWp system integrated on shopping center roof and parking area, aesthetic design",
         "dong_nai_industrial": "Dong Nai industrial zone factory cluster with large-scale 2 MWp solar system"
       }
+    },
+    "zh": {
+      "hero": {
+        "headline": "GoldenEnergy——越南企业的清洁能源解决方案",
+        "subheadline": "设计、安装和运营太阳能系统，降低成本、保护环境并建立可持续的绿色企业形象",
+        "trust_bullets": [
+          "100多个成功项目，从小规模到2兆瓦",
+          "节省 30-50% 电费，5-7年回本",
+          "减少二氧化碳排放，提升绿色企业形象",
+          "25年电池板保修，10年逆变器，远程监控",
+          "专业安装，稳定运行，正常运行时间>99%"
+        ],
+        "cta_variants": {
+          "primary_recommended": "免费项目咨询",
+          "primary_alt_1": "预约现场勘察",
+          "primary_alt_2": "申请详细报价",
+          "secondary_recommended": "查看精选项目",
+          "secondary_alt_1": "下载技术文档",
+          "secondary_alt_2": "计算节省"
+        }
+      },
+      "mission": {
+        "headline": "使命：加速越南的绿色能源转型",
+        "key_points": [
+          "太阳能既节省成本又履行环境责任",
+          "经验丰富的工程团队，每一步都进行质量控制",
+          "可持续、安全且经济高效的解决方案",
+          "从勘察、设计、施工到验收的专业流程"
+        ]
+      },
+      "featured_projects": {
+        "headline": "精选项目——经过验证的质量",
+        "project_1": {
+          "title": "平阳工厂——1.5 兆瓦",
+          "kpis": [
+            "每年节省 40% 电费",
+            "年产量 210万千瓦时",
+            "每年减少 800吨二氧化碳",
+            "3个月施工，自2022年起正常运行时间99.2%"
+          ]
+        },
+        "project_2": {
+          "title": "胡志明市购物中心——500 千瓦",
+          "kpis": [
+            "每年提供 70万千瓦时",
+            "满足系统总用电需求的 35%",
+            "远程监控和自动警报",
+            "集成在屋顶和停车区域"
+          ]
+        },
+        "project_3": {
+          "title": "同奈工业区——2 兆瓦",
+          "kpis": [
+            "预计6年内回本",
+            "每年节省数十亿越南盾",
+            "串式逆变器和AI监控",
+            "大型工厂集群"
+          ]
+        }
+      },
+      "image_alts": {
+        "hero_solar_farm": "工业厂房屋顶上的大规模太阳能系统，广角显示数千块电池板",
+        "engineer_inspection": "GoldenEnergy 工程师在建筑屋顶检查和维护太阳能电池板",
+        "monitoring_dashboard": "太阳能监控移动应用界面，包含实时输出图表和警报",
+        "binh_duong_project": "平阳工厂1.5兆瓦太阳能项目——电池板覆盖制造设施屋顶",
+        "shopping_mall_installation": "购物中心屋顶和停车区集成的500千瓦系统，美观设计",
+        "dong_nai_industrial": "同奈工业区工厂集群，配备大规模2兆瓦太阳能系统"
+      }
     }
   },
   "contact": {
@@ -481,6 +664,61 @@
         "customer_service": "GoldenCard consultant providing phone consultation to customer",
         "form_illustration": "Contact form icon with email, phone, and message symbols"
       }
+    },
+    "zh": {
+      "hero": {
+        "headline": "立即开始您的项目",
+        "subheadline": "GoldenCard 专家团队随时为您的业务需求提供免费咨询，提供最合适的解决方案。透明流程、详细报价、快速响应。",
+        "trust_bullets": [
+          "24小时内提供免费咨询和详细报价",
+          "从勘察到验收的透明工作流程",
+          "经验丰富的专家团队提供24/7技术支持",
+          "承诺准时交付和明确的保修政策"
+        ],
+        "cta_variants": {
+          "primary_recommended": "提交咨询请求",
+          "primary_alt_1": "立即拨打热线",
+          "primary_alt_2": "预约会议",
+          "secondary_recommended": "下载手册",
+          "secondary_alt_1": "查看常见问题",
+          "secondary_alt_2": "在线聊天"
+        }
+      },
+      "form_microcopy": {
+        "heading": "联系咨询",
+        "description": "填写以下信息以获得免费咨询。我们将在24个工作小时内回复。",
+        "field_labels": {
+          "name": "全名 *",
+          "email": "联系邮箱 *",
+          "phone": "电话号码 *",
+          "company": "公司名称",
+          "message": "您需求的简要说明 *"
+        },
+        "placeholders": {
+          "name": "张三",
+          "email": "email@company.com",
+          "phone": "+84 901 234 567",
+          "company": "ABC 有限公司",
+          "message": "我想咨询工厂太阳能解决方案..."
+        },
+        "button_submit": "提交咨询请求",
+        "success_message": "谢谢！我们已收到您的请求，将在24个工作小时内与您联系。",
+        "error_message": "发生错误。请重试或拨打热线：+84 28 1234 5678",
+        "privacy_note": "您的信息是保密的，仅用于咨询目的。"
+      },
+      "contact_info": {
+        "heading": "直接联系信息",
+        "hotline": "+84 28 1234 5678",
+        "email": "hello@goldencard.vn",
+        "address": "越南胡志明市",
+        "hours": "营业时间：上午8:00 - 下午5:30（周一至周五）"
+      },
+      "image_alts": {
+        "contact_hero": "GoldenCard 咨询团队与客户会面，讨论卡片和能源解决方案",
+        "office_location": "胡志明市 GoldenCard 办公室，现代化工作空间",
+        "customer_service": "GoldenCard 顾问为客户提供电话咨询",
+        "form_illustration": "联系表单图标，包含电子邮件、电话和消息符号"
+      }
     }
   },
   "about": {
@@ -537,6 +775,33 @@
         "certification_wall": "Wall displaying GoldenCard's ISO 9001:2015 and PCI Card Production Security certifications",
         "customer_meeting": "Meeting between GoldenCard team and business client, discussing solutions"
       }
+    },
+    "zh": {
+      "hero": {
+        "headline": "关于 GoldenCard——与越南企业携手15年",
+        "subheadline": "我们是值得信赖的合作伙伴，为领先的企业、银行和公司提供磁条卡、银行卡、IT 和太阳能的全面解决方案。",
+        "trust_bullets": [
+          "15年以上经验，100多个成功项目",
+          "20多家大型银行和企业的合作伙伴",
+          "ISO 9001:2015、PCI 卡片生产安全认证",
+          "50多名经验丰富的工程师和专家团队"
+        ]
+      },
+      "values": {
+        "headline": "核心价值观",
+        "key_values": [
+          "卓越质量——从生产到交付的严格控制",
+          "战略合作伙伴——从咨询到长期维护的支持",
+          "先进技术——跟进最新趋势，优化成本",
+          "透明承诺——准时交付、明确保修、24/7支持"
+        ]
+      },
+      "image_alts": {
+        "team_photo": "GoldenCard 团队在办公室合影——工程师、顾问和支持人员",
+        "factory_tour": "GoldenCard 卡片生产工厂，配备现代化生产线和质量控制流程",
+        "certification_wall": "展示 GoldenCard ISO 9001:2015 和 PCI 卡片生产安全认证的墙",
+        "customer_meeting": "GoldenCard 团队与企业客户会面，讨论解决方案"
+      }
     }
   },
   "global_microcopy": {
@@ -592,6 +857,33 @@
         "close_menu": "Close menu",
         "loading": "Loading...",
         "external_link": "External link (opens in new tab)"
+      }
+    },
+    "zh": {
+      "navigation": {
+        "home": "首页",
+        "services": "服务",
+        "about": "关于我们",
+        "goldenenergy": "GoldenEnergy",
+        "contact": "联系我们",
+        "language_switcher": "语言"
+      },
+      "common_ctas": {
+        "learn_more": "了解更多",
+        "get_started": "立即开始",
+        "contact_us": "联系我们",
+        "request_quote": "申请报价",
+        "download": "下载",
+        "view_details": "查看详情",
+        "back_to_top": "回到顶部"
+      },
+      "accessibility": {
+        "skip_to_content": "跳转到主要内容",
+        "close": "关闭",
+        "open_menu": "打开菜单",
+        "close_menu": "关闭菜单",
+        "loading": "加载中...",
+        "external_link": "外部链接（在新标签页中打开）"
       }
     }
   },
