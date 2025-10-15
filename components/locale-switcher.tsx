@@ -10,8 +10,8 @@ interface LocaleSwitcherProps {
 }
 
 const localeConfig = {
-  vi: { flag: "🇻🇳", label: "VI" },
-  en: { flag: "🇬🇧", label: "EN" },
+  vi: { flag: "🇻🇳", label: "Tiếng Việt" },
+  en: { flag: "🇬🇧", label: "English" },
   zh: { flag: "🇨🇳", label: "中文" },
 } as const;
 
@@ -19,30 +19,34 @@ export function LocaleSwitcher({ locale }: LocaleSwitcherProps) {
   const pathname = usePathname() ?? "/";
 
   return (
-    <div className="flex items-center gap-1 text-xs">
+    <div className="flex items-center gap-1.5 text-xs">
       {locales.map((candidate, index) => {
         const isActive = candidate === locale;
         const target = buildSwitchPath(pathname, locale, candidate);
         const config = localeConfig[candidate];
 
         return (
-          <div key={candidate} className="flex items-center gap-1">
+          <div key={candidate} className="flex items-center gap-1.5">
             {isActive ? (
-              <span className="inline-flex items-center gap-1.5 rounded-lg bg-primary/10 px-2.5 py-1.5 font-medium text-primary">
-                <span className="text-base leading-none">{config.flag}</span>
-                <span className="tracking-wide">{config.label}</span>
+              <span 
+                className="inline-flex items-center rounded-lg bg-primary/10 px-2.5 py-1.5 text-xl leading-none transition-all duration-200"
+                title={config.label}
+                aria-label={config.label}
+              >
+                {config.flag}
               </span>
             ) : (
               <Link 
                 href={target} 
-                className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 font-medium text-foreground/60 transition-all duration-200 hover:bg-primary/5 hover:text-primary"
+                className="inline-flex items-center rounded-lg px-2.5 py-1.5 text-xl leading-none text-foreground/60 transition-all duration-200 hover:bg-primary/5 hover:text-primary"
+                title={config.label}
+                aria-label={config.label}
               >
-                <span className="text-base leading-none">{config.flag}</span>
-                <span className="tracking-wide">{config.label}</span>
+                {config.flag}
               </Link>
             )}
             {index < locales.length - 1 && (
-              <span className="text-border" aria-hidden="true">/</span>
+              <span className="text-sm text-border" aria-hidden="true">/</span>
             )}
           </div>
         );

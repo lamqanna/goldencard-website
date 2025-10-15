@@ -14,7 +14,7 @@ interface NavbarProps {
 export function Navbar({ locale, navItems, tagline }: NavbarProps) {
   return (
     <header className="sticky top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60" role="banner">
-      <Container className="flex flex-col gap-4 py-4 sm:flex-row sm:items-center sm:justify-between lg:py-5">
+      <Container className="flex items-center justify-between gap-4 py-4 lg:py-5">
         <div className="flex items-center gap-3">
           <Link 
             href={`/${locale}`} 
@@ -30,24 +30,25 @@ export function Navbar({ locale, navItems, tagline }: NavbarProps) {
           <p className="hidden text-xs text-muted-foreground sm:inline">{tagline}</p>
         </div>
         
-        <nav aria-label={locale === "vi" ? "Điều hướng chính" : "Primary navigation"} role="navigation">
-          <ul className="flex flex-wrap items-center gap-1 text-sm font-medium">
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <Link 
-                  className="relative rounded-lg px-3 py-2 text-foreground/70 transition-all duration-200 hover:bg-primary/5 hover:text-primary" 
-                  href={item.href} 
-                  aria-current={item.href.endsWith(`/${locale}`) ? "page" : undefined}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-            <li className="ml-2">
-              <LocaleSwitcher locale={locale} />
-            </li>
-          </ul>
-        </nav>
+        <div className="flex items-center gap-6">
+          <nav aria-label={locale === "vi" ? "Điều hướng chính" : "Primary navigation"} role="navigation" className="hidden md:block">
+            <ul className="flex items-center gap-1 text-sm font-medium">
+              {navItems.map((item) => (
+                <li key={item.href}>
+                  <Link 
+                    className="relative rounded-lg px-3 py-2 text-foreground/70 transition-all duration-200 hover:bg-primary/5 hover:text-primary" 
+                    href={item.href} 
+                    aria-current={item.href.endsWith(`/${locale}`) ? "page" : undefined}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          
+          <LocaleSwitcher locale={locale} />
+        </div>
       </Container>
     </header>
   );
