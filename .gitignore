@@ -12,6 +12,8 @@
 
 # testing
 /coverage
+/test-results
+/tests/e2e-report
 
 # next.js
 /.next/
@@ -40,4 +42,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-.vercel
+# backup files
+*.prev.json
+*-good.json
+final-copy-edits.json
+
+# deployment scripts
+deploy.ps1
