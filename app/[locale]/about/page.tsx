@@ -25,18 +25,18 @@ export default async function AboutPage({ params }: AboutPageProps) {
   const values = about.values;
 
   return (
-    <Container className="space-y-16 py-16 sm:py-20">
+    <Container className="space-y-20 py-20 sm:py-24 lg:py-28">
       <Section
         id="about-overview"
         title={hero?.headline ?? (locale === "vi" ? "Về GoldenCard" : "About GoldenCard")}
         description={hero?.subheadline}
       >
         {hero?.trust_bullets ? (
-          <ul className="space-y-3 text-sm text-foreground/80 md:text-base">
+          <ul className="mt-8 grid gap-4 text-sm sm:grid-cols-2 md:text-base">
             {hero.trust_bullets.map((bullet) => (
-              <li key={bullet} className="flex items-start gap-2">
-                <span className="mt-1.5 inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                <span>{bullet}</span>
+              <li key={bullet} className="group flex items-start gap-3 rounded-xl border border-border/40 bg-card/50 p-4 transition-all duration-300 hover:border-primary/30 hover:bg-card hover:shadow-md hover:shadow-primary/5">
+                <span className="mt-1 flex h-2 w-2 flex-shrink-0 rounded-full bg-gradient-to-br from-primary to-primary/60 shadow-sm shadow-primary/50 transition-transform duration-300 group-hover:scale-110" />
+                <span className="leading-relaxed text-foreground/80">{bullet}</span>
               </li>
             ))}
           </ul>
@@ -45,11 +45,11 @@ export default async function AboutPage({ params }: AboutPageProps) {
 
       <Section id="about-values" title={values?.headline}>
         {values?.key_values ? (
-          <ul className="space-y-3 text-sm text-foreground/80 md:text-base">
+          <ul className="mt-8 grid gap-4 text-sm sm:grid-cols-2 md:text-base">
             {values.key_values.map((value) => (
-              <li key={value} className="flex items-start gap-2">
-                <span className="mt-1.5 inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                <span>{value}</span>
+              <li key={value} className="group flex items-start gap-3 rounded-xl border border-border/40 bg-card/50 p-4 transition-all duration-300 hover:border-accent/30 hover:bg-card hover:shadow-md hover:shadow-accent/5">
+                <span className="mt-1 flex h-2 w-2 flex-shrink-0 rounded-full bg-gradient-to-br from-accent to-accent/60 shadow-sm shadow-accent/50 transition-transform duration-300 group-hover:scale-110" />
+                <span className="leading-relaxed text-foreground/80">{value}</span>
               </li>
             ))}
           </ul>

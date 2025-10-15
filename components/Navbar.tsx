@@ -13,24 +13,37 @@ interface NavbarProps {
 
 export function Navbar({ locale, navItems, tagline }: NavbarProps) {
   return (
-    <header className="sticky top-0 z-20 border-b border-border/70 bg-background/90 backdrop-blur" role="banner">
-      <Container className="flex flex-col gap-4 py-4 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <Link href={`/${locale}`} className="text-lg font-semibold tracking-tight text-primary" aria-label="GoldenCard home">
-            GoldenCard
+    <header className="sticky top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60" role="banner">
+      <Container className="flex flex-col gap-4 py-4 sm:flex-row sm:items-center sm:justify-between lg:py-5">
+        <div className="flex items-center gap-3">
+          <Link 
+            href={`/${locale}`} 
+            className="group relative inline-flex items-center gap-2 text-xl font-semibold tracking-tight text-foreground transition-colors hover:text-primary" 
+            aria-label="GoldenCard home"
+          >
+            <span className="relative">
+              GoldenCard
+              <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-gradient-to-r from-primary to-accent transition-all duration-300 group-hover:w-full" />
+            </span>
           </Link>
-          <p className="text-sm text-muted-foreground">{tagline}</p>
+          <span className="hidden text-xs text-muted-foreground sm:inline">|</span>
+          <p className="hidden text-xs text-muted-foreground sm:inline">{tagline}</p>
         </div>
+        
         <nav aria-label={locale === "vi" ? "Điều hướng chính" : "Primary navigation"} role="navigation">
-          <ul className="flex flex-wrap items-center gap-4 text-sm font-medium text-foreground/80">
+          <ul className="flex flex-wrap items-center gap-1 text-sm font-medium">
             {navItems.map((item) => (
               <li key={item.href}>
-                <Link className="transition hover:text-primary" href={item.href} aria-current={item.href.endsWith(`/${locale}`) ? "page" : undefined}>
+                <Link 
+                  className="relative rounded-lg px-3 py-2 text-foreground/70 transition-all duration-200 hover:bg-primary/5 hover:text-primary" 
+                  href={item.href} 
+                  aria-current={item.href.endsWith(`/${locale}`) ? "page" : undefined}
+                >
                   {item.label}
                 </Link>
               </li>
             ))}
-            <li>
+            <li className="ml-2">
               <LocaleSwitcher locale={locale} />
             </li>
           </ul>

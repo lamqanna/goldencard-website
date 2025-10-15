@@ -53,24 +53,25 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
   ];
 
   return (
-    <Container className="space-y-16 py-16 sm:py-20">
+    <Container className="space-y-20 py-20 sm:py-24 lg:py-28">
       <Section
         title={hero?.headline ?? (locale === "vi" ? "Dịch vụ chiến lược" : "Strategic Services")}
         description={hero?.subheadline}
         className="border-b-0 pb-0"
       >
         {hero?.trust_bullets ? (
-          <ul className="mt-6 space-y-3 text-sm text-foreground/80 md:text-base">
+          <ul className="mt-8 grid gap-3 text-sm sm:grid-cols-2 md:text-base">
             {hero.trust_bullets.map((bullet: string) => (
-              <li key={bullet} className="flex items-start gap-2">
-                <span className="mt-1.5 inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                <span>{bullet}</span>
+              <li key={bullet} className="flex items-start gap-3 leading-relaxed">
+                <span className="mt-1.5 flex h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-br from-primary to-primary/60" />
+                <span className="text-foreground/80">{bullet}</span>
               </li>
             ))}
           </ul>
         ) : null}
       </Section>
-      <div className="grid gap-6 md:grid-cols-2">
+      
+      <div className="grid gap-6 sm:grid-cols-2 lg:gap-8">
         {cards.map((card) => (
           <ServiceCard
             key={card.key}

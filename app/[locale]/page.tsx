@@ -40,28 +40,28 @@ export default async function HomePage({ params }: HomePageProps) {
         secondaryCta={hero.cta_variants?.secondary_recommended || (locale === "vi" ? "Tìm hiểu thêm" : "Learn more")}
         trustLines={sitewide.trust_lines}
       />
-      <Container className="space-y-16 py-16 sm:py-20">
+      <Container className="space-y-20 py-20 sm:py-24 lg:py-28">
         <Section
           id="services-overview"
           title={sections.services_overview?.headline}
           description={sections.services_overview?.description}
         >
-          <ul className="space-y-3 text-sm text-foreground/80 md:text-base">
+          <ul className="mt-8 grid gap-4 text-sm sm:grid-cols-2 md:text-base">
             {sections.services_overview?.key_benefits?.map((benefit: string) => (
-              <li key={benefit} className="flex items-start gap-2">
-                <span className="mt-1.5 inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                <span>{benefit}</span>
+              <li key={benefit} className="group flex items-start gap-3 rounded-xl border border-border/40 bg-card/50 p-4 transition-all duration-300 hover:border-primary/30 hover:bg-card hover:shadow-md hover:shadow-primary/5">
+                <span className="mt-1 flex h-2 w-2 flex-shrink-0 rounded-full bg-gradient-to-br from-primary to-primary/60 shadow-sm shadow-primary/50 transition-transform duration-300 group-hover:scale-110" />
+                <span className="leading-relaxed text-foreground/80">{benefit}</span>
               </li>
             ))}
           </ul>
         </Section>
 
         <Section id="why" title={sections.why_choose?.headline}>
-          <ul className="space-y-3 text-sm text-foreground/80 md:text-base">
+          <ul className="mt-8 grid gap-4 text-sm sm:grid-cols-2 md:text-base">
             {sections.why_choose?.trust_points?.map((point: string) => (
-              <li key={point} className="flex items-start gap-2">
-                <span className="mt-1.5 inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                <span>{point}</span>
+              <li key={point} className="group flex items-start gap-3 rounded-xl border border-border/40 bg-card/50 p-4 transition-all duration-300 hover:border-accent/30 hover:bg-card hover:shadow-md hover:shadow-accent/5">
+                <span className="mt-1 flex h-2 w-2 flex-shrink-0 rounded-full bg-gradient-to-br from-accent to-accent/60 shadow-sm shadow-accent/50 transition-transform duration-300 group-hover:scale-110" />
+                <span className="leading-relaxed text-foreground/80">{point}</span>
               </li>
             ))}
           </ul>

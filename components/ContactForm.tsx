@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Send } from "lucide-react";
 
 import type { Locale } from "@/lib/i18n";
 
@@ -49,82 +50,97 @@ export function ContactForm({ locale, placeholders }: ContactFormProps) {
     <form
       id="form"
       onSubmit={handleSubmit}
-      className="grid gap-4 rounded-2xl border border-border/70 bg-card p-6 shadow-sm"
+      className="relative overflow-hidden rounded-3xl border border-border/60 bg-gradient-to-br from-card to-card/50 p-8 shadow-lg shadow-primary/5 backdrop-blur-sm transition-shadow duration-300 hover:shadow-xl hover:shadow-primary/10"
       aria-live="polite"
     >
-      <div className="grid gap-3 md:grid-cols-2">
-        <label className="flex flex-col">
+      {/* Decorative elements */}
+      <div className="pointer-events-none absolute -right-16 -top-16 h-32 w-32 rounded-full bg-primary/5 blur-2xl" aria-hidden="true" />
+      <div className="pointer-events-none absolute -bottom-16 -left-16 h-32 w-32 rounded-full bg-accent/5 blur-2xl" aria-hidden="true" />
+      
+      <div className="relative grid gap-5 md:grid-cols-2">
+        <label className="group flex flex-col">
           <span className="sr-only">{placeholders.form_placeholder_name}</span>
           <input
             required
             name="name"
             placeholder={placeholders.form_placeholder_name}
-            className="rounded-xl border border-border bg-background px-4 py-3 text-sm shadow-inner focus-visible:border-primary"
+            className="rounded-xl border border-border/60 bg-background/80 px-4 py-3.5 text-sm shadow-sm transition-all duration-200 placeholder:text-muted-foreground/60 focus-visible:border-primary/50 focus-visible:shadow-md focus-visible:shadow-primary/10 focus-visible:outline-none"
             autoComplete="name"
             aria-required="true"
           />
         </label>
-        <label className="flex flex-col">
+        
+        <label className="group flex flex-col">
           <span className="sr-only">{placeholders.form_placeholder_email}</span>
           <input
             required
             type="email"
             name="email"
             placeholder={placeholders.form_placeholder_email}
-            className="rounded-xl border border-border bg-background px-4 py-3 text-sm shadow-inner focus-visible:border-primary"
+            className="rounded-xl border border-border/60 bg-background/80 px-4 py-3.5 text-sm shadow-sm transition-all duration-200 placeholder:text-muted-foreground/60 focus-visible:border-primary/50 focus-visible:shadow-md focus-visible:shadow-primary/10 focus-visible:outline-none"
             autoComplete="email"
             aria-required="true"
           />
         </label>
-        <label className="flex flex-col">
+        
+        <label className="group flex flex-col">
           <span className="sr-only">{placeholders.form_placeholder_phone}</span>
           <input
             required
             name="phone"
             placeholder={placeholders.form_placeholder_phone}
-            className="rounded-xl border border-border bg-background px-4 py-3 text-sm shadow-inner focus-visible:border-primary"
+            className="rounded-xl border border-border/60 bg-background/80 px-4 py-3.5 text-sm shadow-sm transition-all duration-200 placeholder:text-muted-foreground/60 focus-visible:border-primary/50 focus-visible:shadow-md focus-visible:shadow-primary/10 focus-visible:outline-none"
             autoComplete="tel"
             aria-required="true"
           />
         </label>
-        <label className="flex flex-col">
+        
+        <label className="group flex flex-col">
           <span className="sr-only">{placeholders.form_placeholder_company}</span>
           <input
             name="company"
             placeholder={placeholders.form_placeholder_company}
-            className="rounded-xl border border-border bg-background px-4 py-3 text-sm shadow-inner focus-visible:border-primary"
+            className="rounded-xl border border-border/60 bg-background/80 px-4 py-3.5 text-sm shadow-sm transition-all duration-200 placeholder:text-muted-foreground/60 focus-visible:border-primary/50 focus-visible:shadow-md focus-visible:shadow-primary/10 focus-visible:outline-none"
             autoComplete="organization"
           />
         </label>
       </div>
-      <label className="flex flex-col">
+      
+      <label className="relative mt-5 flex flex-col">
         <span className="sr-only">{placeholders.form_placeholder_message}</span>
         <textarea
           required
           name="message"
           placeholder={placeholders.form_placeholder_message}
-          className="h-32 rounded-xl border border-border bg-background px-4 py-3 text-sm shadow-inner focus-visible:border-primary"
+          className="h-36 resize-none rounded-xl border border-border/60 bg-background/80 px-4 py-3.5 text-sm shadow-sm transition-all duration-200 placeholder:text-muted-foreground/60 focus-visible:border-primary/50 focus-visible:shadow-md focus-visible:shadow-primary/10 focus-visible:outline-none"
           aria-required="true"
         />
       </label>
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      
+      <div className="relative mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <button
           type="submit"
-          className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-sm transition hover:bg-primary/90"
+          className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary to-primary/90 px-8 py-3.5 text-sm font-medium text-primary-foreground shadow-lg shadow-primary/25 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary/30 active:scale-100"
         >
           {placeholders.button_submit_form}
+          <Send className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
         </button>
+        
         {status === "success" ? (
-          <p className="text-sm font-medium text-primary/90">
+          <p className="flex items-center gap-2 text-sm font-medium text-accent">
+            <span className="flex h-2 w-2 rounded-full bg-accent" />
             {placeholders.form_success_message}
           </p>
         ) : null}
+        
         {status === "error" ? (
-          <p className="text-sm font-medium text-destructive/90">
+          <p className="flex items-center gap-2 text-sm font-medium text-destructive">
+            <span className="flex h-2 w-2 rounded-full bg-destructive" />
             {placeholders.form_error_message}
           </p>
         ) : null}
       </div>
+      
       <input type="text" name="honeypot" className="hidden" tabIndex={-1} autoComplete="off" />
     </form>
   );
