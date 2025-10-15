@@ -3,8 +3,8 @@ import { notFound } from "next/navigation";
 
 import { Container } from "@/components/Container";
 import { ContactForm } from "@/components/ContactForm";
-import { Hero } from "@/components/Hero";
 import { Section } from "@/components/Section";
+import { PremiumHero, PremiumStats } from "@/components/premium-ui";
 import {
   getHomeHero,
   getHomeSections,
@@ -32,14 +32,47 @@ export default async function HomePage({ params }: HomePageProps) {
 
   return (
     <>
-      <Hero
+      <PremiumHero
         locale={locale}
         headline={hero.headline}
         subheadline={hero.subheadline}
-        primaryCta={hero.cta_variants?.primary_recommended || (locale === "vi" ? "Liên hệ" : "Contact")}
-        secondaryCta={hero.cta_variants?.secondary_recommended || (locale === "vi" ? "Tìm hiểu thêm" : "Learn more")}
-        trustLines={sitewide.trust_lines}
+        ctaPrimary={hero.cta_variants?.primary_recommended || (locale === "vi" ? "Liên hệ" : "Contact")}
+        ctaSecondary={hero.cta_variants?.secondary_recommended || (locale === "vi" ? "Tìm hiểu thêm" : "Learn more")}
+        ctaPrimaryLink={`/${locale}/contact`}
+        ctaSecondaryLink={`/${locale}/services`}
+        trustBullets={hero.trust_bullets || sitewide.trust_lines}
       />
+
+      {/* Premium Stats Section */}
+      <div className="relative -mt-20 z-10">
+        <Container>
+          <PremiumStats
+            stats={[
+              {
+                value: 20,
+                suffix: "+",
+                label: locale === "vi" ? "Năm kinh nghiệm" : locale === "zh" ? "年经验" : "Years Experience",
+              },
+              {
+                value: 20000,
+                suffix: "+",
+                label: locale === "vi" ? "Đối tác" : locale === "zh" ? "合作伙伴" : "Partners",
+              },
+              {
+                value: 200,
+                suffix: "+",
+                label: locale === "vi" ? "Khách hàng" : locale === "zh" ? "客户" : "Customers",
+              },
+              {
+                value: 20,
+                suffix: locale === "vi" ? " Tỷ VND" : locale === "zh" ? " 亿越南盾" : "B VND",
+                label: locale === "vi" ? "Doanh thu/năm" : locale === "zh" ? "年收入" : "Annual Revenue",
+              },
+            ]}
+          />
+        </Container>
+      </div>
+
       <Container className="space-y-20 py-20 sm:py-24 lg:py-28">
         <Section
           id="services-overview"
