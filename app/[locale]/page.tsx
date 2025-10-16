@@ -5,6 +5,7 @@ import { Container } from "@/components/Container";
 import { ContactForm } from "@/components/ContactForm";
 import { Section } from "@/components/Section";
 import { PremiumHero, PremiumStats } from "@/components/premium-ui";
+import { PartnerLogos } from "@/components/PartnerLogos";
 import {
   getHomeHero,
   getHomeSections,
@@ -99,7 +100,12 @@ export default async function HomePage({ params }: HomePageProps) {
             ))}
           </ul>
         </Section>
+      </Container>
 
+      {/* Partner Logos Section - Outside Container for full-width background */}
+      <PartnerLogos locale={locale} />
+
+      <Container className="space-y-20 py-20 sm:py-24 lg:py-28">
         <Section
           id="contact"
           title={
