@@ -60,7 +60,7 @@ export function Footer({ locale, navItems, trustLines }: FooterProps) {
           
           <div className="space-y-2 border-t border-border/40 pt-6 text-xs text-muted-foreground">
             <p>© {new Date().getFullYear()} GoldenCard</p>
-            <p>{locale === "vi" ? "Tất cả quyền được bảo lưu." : "All rights reserved."}</p>
+            <p>{locale === "vi" ? "Tất cả quyền được bảo lưu." : locale === "zh" ? "版权所有" : "All rights reserved."}</p>
           </div>
         </div>
       </Container>

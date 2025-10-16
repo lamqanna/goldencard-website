@@ -71,9 +71,9 @@ export default async function ContactPage({ params }: ContactPageProps) {
               <div className="rounded-2xl border border-border/60 bg-card/70 p-4">
                 <p className="text-sm font-semibold text-primary">{contactInfo.heading}</p>
                 <ul className="mt-3 space-y-2 text-sm">
-                  {contactInfo.hotline ? <li>{locale === "vi" ? "Hotline" : "Hotline"}: {contactInfo.hotline}</li> : null}
+                  {contactInfo.hotline ? <li>{locale === "vi" ? "Hotline" : locale === "zh" ? "热线电话" : "Hotline"}: {contactInfo.hotline}</li> : null}
                   {contactInfo.email ? <li>Email: {contactInfo.email}</li> : null}
-                  {contactInfo.address ? <li>{locale === "vi" ? "Địa chỉ" : "Address"}: {contactInfo.address}</li> : null}
+                  {contactInfo.address ? <li>{locale === "vi" ? "Địa chỉ" : locale === "zh" ? "地址" : "Address"}: {contactInfo.address}</li> : null}
                   {contactInfo.hours ? <li>{contactInfo.hours}</li> : null}
                 </ul>
               </div>

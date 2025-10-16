@@ -30,25 +30,25 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
       key: "magnetic_cards",
       title: highlights.magnetic_cards?.headline ?? (locale === "vi" ? "Thẻ từ" : "Magnetic Cards"),
       benefits: highlights.magnetic_cards?.short_benefits ?? [],
-      benefitsLabel: locale === "vi" ? "Lợi ích nổi bật" : "Key benefits",
+      benefitsLabel: locale === "vi" ? "Lợi ích nổi bật" : locale === "zh" ? "主要优势" : "Key benefits",
     },
     {
       key: "bank_cards",
       title: highlights.bank_cards?.headline ?? (locale === "vi" ? "Thẻ ngân hàng" : "Bank Cards"),
       benefits: highlights.bank_cards?.short_benefits ?? [],
-      benefitsLabel: locale === "vi" ? "Lợi ích nổi bật" : "Key benefits",
+      benefitsLabel: locale === "vi" ? "Lợi ích nổi bật" : locale === "zh" ? "主要优势" : "Key benefits",
     },
     {
       key: "it_services",
       title: highlights.it_services?.headline ?? (locale === "vi" ? "Giải pháp CNTT" : "IT Services"),
       benefits: highlights.it_services?.short_benefits ?? [],
-      benefitsLabel: locale === "vi" ? "Lợi ích nổi bật" : "Key benefits",
+      benefitsLabel: locale === "vi" ? "Lợi ích nổi bật" : locale === "zh" ? "主要优势" : "Key benefits",
     },
     {
       key: "solar_solutions",
       title: highlights.solar_solutions?.headline ?? (locale === "vi" ? "Giải pháp năng lượng mặt trời" : "Solar Solutions"),
       benefits: highlights.solar_solutions?.short_benefits ?? [],
-      benefitsLabel: locale === "vi" ? "Lợi ích nổi bật" : "Key benefits",
+      benefitsLabel: locale === "vi" ? "Lợi ích nổi bật" : locale === "zh" ? "主要优势" : "Key benefits",
     },
   ];
 
