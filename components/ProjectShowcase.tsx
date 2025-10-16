@@ -181,34 +181,29 @@ export function ProjectShowcase({ locale }: ProjectShowcaseProps) {
             {[
               { 
                 value: "200+", 
-                label: locale === "vi" ? "Dự án thành công" : locale === "zh" ? "成功项目" : "Successful Projects",
-                icon: "🎯"
+                label: locale === "vi" ? "Dự án thành công" : locale === "zh" ? "成功项目" : "Successful Projects"
               },
               { 
                 value: "100%", 
-                label: locale === "vi" ? "Khách hàng hài lòng" : locale === "zh" ? "客户满意度" : "Client Satisfaction",
-                icon: "⭐"
+                label: locale === "vi" ? "Khách hàng hài lòng" : locale === "zh" ? "客户满意度" : "Client Satisfaction"
               },
               { 
                 value: "15+", 
-                label: locale === "vi" ? "Năm kinh nghiệm" : locale === "zh" ? "年经验" : "Years Experience",
-                icon: "📅"
+                label: locale === "vi" ? "Năm kinh nghiệm" : locale === "zh" ? "年经验" : "Years Experience"
               },
               { 
                 value: "50+", 
-                label: locale === "vi" ? "Đối tác tin cậy" : locale === "zh" ? "可信赖的合作伙伴" : "Trusted Partners",
-                icon: "🤝"
+                label: locale === "vi" ? "Đối tác tin cậy" : locale === "zh" ? "可信赖的合作伙伴" : "Trusted Partners"
               },
             ].map((stat, index) => (
               <motion.div 
                 key={index} 
                 className="text-center p-6 md:p-8 rounded-2xl 
-                         bg-gradient-to-br from-white to-gold-50/30
-                         border border-gold-200/40 shadow-lg hover:shadow-xl
+                         bg-gradient-to-br from-amber-50/50 via-yellow-50/40 to-orange-50/30
+                         border border-gold-200/30 shadow-lg hover:shadow-xl
                          transition-all duration-300 hover:scale-105"
                 whileHover={{ y: -4 }}
               >
-                <div className="text-3xl mb-3">{stat.icon}</div>
                 <div className="text-4xl md:text-5xl font-bold mb-3
                               bg-gradient-to-r from-gold-800 via-gold-700 to-neutral-900 
                               bg-clip-text text-transparent

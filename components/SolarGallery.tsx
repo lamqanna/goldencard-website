@@ -319,34 +319,29 @@ export function SolarGallery({ locale }: SolarGalleryProps) {
             {[
               { 
                 value: "500+", 
-                label: locale === "vi" ? "Dự án hoàn thành" : locale === "zh" ? "已完成项目" : "Projects Completed",
-                icon: "🏆"
+                label: locale === "vi" ? "Dự án hoàn thành" : locale === "zh" ? "已完成项目" : "Projects Completed"
               },
               { 
                 value: "50MW", 
-                label: locale === "vi" ? "Tổng công suất" : locale === "zh" ? "总容量" : "Total Capacity",
-                icon: "⚡"
+                label: locale === "vi" ? "Tổng công suất" : locale === "zh" ? "总容量" : "Total Capacity"
               },
               { 
                 value: "15+", 
-                label: locale === "vi" ? "Năm kinh nghiệm" : locale === "zh" ? "年经验" : "Years Experience",
-                icon: "📅"
+                label: locale === "vi" ? "Năm kinh nghiệm" : locale === "zh" ? "年经验" : "Years Experience"
               },
               { 
                 value: "98%", 
-                label: locale === "vi" ? "Khách hàng hài lòng" : locale === "zh" ? "客户满意度" : "Client Satisfaction",
-                icon: "⭐"
+                label: locale === "vi" ? "Khách hàng hài lòng" : locale === "zh" ? "客户满意度" : "Client Satisfaction"
               },
             ].map((stat, index) => (
               <motion.div 
                 key={index} 
                 className="text-center p-6 md:p-8 rounded-2xl 
-                         bg-gradient-to-br from-white to-yellow-50/50
-                         border border-yellow-200/40 shadow-lg hover:shadow-xl
+                         bg-gradient-to-br from-yellow-50/60 via-orange-50/40 to-amber-50/50
+                         border border-yellow-200/30 shadow-lg hover:shadow-xl
                          transition-all duration-300 hover:scale-105"
                 whileHover={{ y: -4 }}
               >
-                <div className="text-3xl mb-3">{stat.icon}</div>
                 <div className="text-4xl md:text-5xl font-bold mb-3
                               bg-gradient-to-r from-yellow-700 via-orange-600 to-teal-700 
                               bg-clip-text text-transparent
