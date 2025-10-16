@@ -102,20 +102,42 @@ export default async function HomePage({ params }: HomePageProps) {
 
         <Section
           id="contact"
-          title={locale === "vi" ? "Liên hệ với chúng tôi" : "Contact Us"}
-          description={locale === "vi" ? "Hãy để chúng tôi giúp bạn tìm giải pháp phù hợp" : "Let us help you find the right solution"}
+          title={
+            locale === "vi" 
+              ? "Liên hệ với chúng tôi" 
+              : locale === "zh" 
+              ? "联系我们" 
+              : "Contact Us"
+          }
+          description={
+            locale === "vi" 
+              ? "Hãy để chúng tôi giúp bạn tìm giải pháp phù hợp" 
+              : locale === "zh"
+              ? "让我们帮助您找到合适的解决方案"
+              : "Let us help you find the right solution"
+          }
         >
           <ContactForm
             locale={locale}
             placeholders={{
-              form_placeholder_name: locale === "vi" ? "Họ và tên" : "Full name",
+              form_placeholder_name: locale === "vi" ? "Họ và tên" : locale === "zh" ? "全名" : "Full name",
               form_placeholder_email: "Email",
-              form_placeholder_phone: locale === "vi" ? "Số điện thoại" : "Phone",
-              form_placeholder_company: locale === "vi" ? "Công ty" : "Company",
-              form_placeholder_message: locale === "vi" ? "Tin nhắn" : "Message",
-              button_submit_form: locale === "vi" ? "Gửi" : "Send",
-              form_success_message: locale === "vi" ? "Cảm ơn! Chúng tôi sẽ liên hệ sớm." : "Thank you! We'll contact you soon.",
-              form_error_message: locale === "vi" ? "Đã xảy ra lỗi. Vui lòng thử lại." : "An error occurred. Please try again.",
+              form_placeholder_phone: locale === "vi" ? "Số điện thoại" : locale === "zh" ? "电话号码" : "Phone",
+              form_placeholder_company: locale === "vi" ? "Công ty" : locale === "zh" ? "公司名称" : "Company",
+              form_placeholder_message: locale === "vi" ? "Tin nhắn" : locale === "zh" ? "留言" : "Message",
+              button_submit_form: locale === "vi" ? "Gửi" : locale === "zh" ? "提交" : "Send",
+              form_success_message: 
+                locale === "vi" 
+                  ? "Cảm ơn! Chúng tôi sẽ liên hệ sớm." 
+                  : locale === "zh"
+                  ? "谢谢！我们会尽快联系您。"
+                  : "Thank you! We'll contact you soon.",
+              form_error_message: 
+                locale === "vi" 
+                  ? "Đã xảy ra lỗi. Vui lòng thử lại." 
+                  : locale === "zh"
+                  ? "发生错误。请重试。"
+                  : "An error occurred. Please try again.",
             }}
           />
         </Section>
