@@ -213,7 +213,8 @@ export function SolarProjectShowcase({ locale }: SolarProjectShowcaseProps) {
                 
                 {/* Value */}
                 <div className="text-2xl md:text-3xl font-black mb-2">
-                  <span className="bg-gradient-to-r from-teal-700 via-teal-600 to-green-600 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-teal-800 via-teal-700 to-green-700 bg-clip-text text-transparent
+                                 drop-shadow-lg" style={{ WebkitTextStroke: '0.5px rgba(20, 184, 166, 0.1)' }}>
                     {stat.value}
                   </span>
                 </div>

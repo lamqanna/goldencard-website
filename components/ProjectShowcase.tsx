@@ -210,8 +210,9 @@ export function ProjectShowcase({ locale }: ProjectShowcaseProps) {
               >
                 <div className="text-3xl mb-3">{stat.icon}</div>
                 <div className="text-4xl md:text-5xl font-bold mb-3
-                              bg-gradient-to-r from-gold-600 via-gold-500 to-neutral-900 
-                              bg-clip-text text-transparent">
+                              bg-gradient-to-r from-gold-800 via-gold-700 to-neutral-900 
+                              bg-clip-text text-transparent
+                              drop-shadow-md" style={{ WebkitTextStroke: '0.5px rgba(212, 175, 55, 0.1)' }}>
                   {stat.value}
                 </div>
                 <div className="text-sm md:text-base font-medium text-neutral-700 leading-tight">

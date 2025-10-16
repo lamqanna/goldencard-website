@@ -139,7 +139,8 @@ export function SolarGallery({ locale }: SolarGalleryProps) {
               variants={motionVariants.fadeUp}
               className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6"
             >
-              <span className="bg-gradient-to-r from-yellow-600 via-orange-500 to-teal-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-yellow-700 via-orange-600 to-teal-700 bg-clip-text text-transparent
+                             drop-shadow-lg" style={{ WebkitTextStroke: '0.5px rgba(212, 175, 55, 0.1)' }}>
                 {locale === "vi" 
                   ? "Hệ thống năng lượng mặt trời" 
                   : locale === "zh" 
@@ -347,8 +348,9 @@ export function SolarGallery({ locale }: SolarGalleryProps) {
               >
                 <div className="text-3xl mb-3">{stat.icon}</div>
                 <div className="text-4xl md:text-5xl font-bold mb-3
-                              bg-gradient-to-r from-yellow-600 via-orange-500 to-teal-600 
-                              bg-clip-text text-transparent">
+                              bg-gradient-to-r from-yellow-700 via-orange-600 to-teal-700 
+                              bg-clip-text text-transparent
+                              drop-shadow-md" style={{ WebkitTextStroke: '0.5px rgba(212, 175, 55, 0.1)' }}>
                   {stat.value}
                 </div>
                 <div className="text-sm md:text-base font-medium text-neutral-700 leading-tight">

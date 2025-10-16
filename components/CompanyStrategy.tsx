@@ -124,7 +124,8 @@ export function CompanyStrategy({ locale }: CompanyStrategyProps) {
               variants={motionVariants.fadeUp}
               className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6"
             >
-              <span className="bg-gradient-to-r from-gold-600 via-orange-500 to-teal-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-gold-800 via-orange-600 to-teal-700 bg-clip-text text-transparent
+                             drop-shadow-lg" style={{ WebkitTextStroke: '0.5px rgba(212, 175, 55, 0.1)' }}>
                 {locale === "vi" 
                   ? "Chiến lược & Giá trị" 
                   : locale === "zh" 

@@ -145,7 +145,8 @@ export function PartnerGrid({ locale, category }: PartnerGridProps) {
                           border border-gold-200/30 shadow-lg">
               <span className="text-4xl">🤝</span>
               <div className="text-left">
-                <div className="text-2xl font-bold bg-gradient-to-r from-gold-600 to-teal-600 bg-clip-text text-transparent">
+                <div className="text-2xl font-bold bg-gradient-to-r from-gold-800 via-gold-700 to-teal-700 bg-clip-text text-transparent
+                              drop-shadow-lg" style={{ WebkitTextStroke: '0.5px rgba(212, 175, 55, 0.1)' }}>
                   {partners.length}+
                 </div>
                 <div className="text-sm text-neutral-700 font-medium">
