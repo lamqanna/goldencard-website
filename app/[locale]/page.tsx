@@ -110,12 +110,6 @@ export default async function HomePage({ params }: HomePageProps) {
       {/* Partners Section - Cards */}
       <PartnerGrid locale={locale} category="cards" />
 
-      {/* Featured Projects */}
-      <ProjectShowcase locale={locale} />
-
-      {/* Partners Section - Solar */}
-      <PartnerGrid locale={locale} category="solar" />
-
       <Container className="space-y-20 py-20 sm:py-24 lg:py-28">
         <Section
           id="contact"

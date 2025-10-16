@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { Container } from "@/components/Container";
 import { Section } from "@/components/Section";
 import { SolarGallery } from "@/components/SolarGallery";
+import { PartnerGrid } from "@/components/PartnerGrid";
+import { SolarProjectShowcase } from "@/components/SolarProjectShowcase";
 import { getGoldenEnergy } from "@/lib/content";
 import { isLocale, type Locale } from "@/lib/i18n";
 import { buildPageMetadata } from "@/lib/seo";
@@ -86,6 +88,12 @@ export default async function GoldenEnergyPage({ params }: GoldenEnergyPageProps
 
       {/* Solar Gallery Section - Full Width */}
       <SolarGallery locale={locale} />
+
+      {/* Partners Section - Solar Energy */}
+      <PartnerGrid locale={locale} category="solar" />
+
+      {/* Featured Solar Projects */}
+      <SolarProjectShowcase locale={locale} />
     </>
   );
 }

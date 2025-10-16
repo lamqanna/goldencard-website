@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { Target, Lightbulb, TrendingUp, Users } from "lucide-react"
 import type { Locale } from "@/lib/i18n"
 import { motionVariants } from "@/lib/motion-variants"
 
@@ -13,7 +12,7 @@ interface CompanyStrategyProps {
 export function CompanyStrategy({ locale }: CompanyStrategyProps) {
   const strategies = [
     {
-      icon: Target,
+      number: "01",
       title: {
         vi: "Sứ mệnh",
         zh: "使命",
@@ -24,10 +23,10 @@ export function CompanyStrategy({ locale }: CompanyStrategyProps) {
         zh: "提供先进的卡技术和绿色能源解决方案，为社会可持续发展做出贡献",
         en: "Provide advanced card technology and green energy solutions, contributing to sustainable development"
       },
-      color: "from-gold-500 to-gold-600"
+      gradient: "from-gold-700 via-gold-600 to-gold-500"
     },
     {
-      icon: Lightbulb,
+      number: "02",
       title: {
         vi: "Tầm nhìn",
         zh: "愿景",
@@ -38,10 +37,10 @@ export function CompanyStrategy({ locale }: CompanyStrategyProps) {
         zh: "成为越南领先的卡技术和可再生能源公司，扩展到东南亚地区",
         en: "Become Vietnam's leading card technology and renewable energy company, expanding to Southeast Asia"
       },
-      color: "from-teal-500 to-teal-600"
+      gradient: "from-teal-700 via-teal-600 to-teal-500"
     },
     {
-      icon: TrendingUp,
+      number: "03",
       title: {
         vi: "Chiến lược phát triển",
         zh: "发展战略",
@@ -52,10 +51,10 @@ export function CompanyStrategy({ locale }: CompanyStrategyProps) {
         zh: "投资现代技术，扩大市场，建设专业团队，发展可持续合作伙伴生态系统",
         en: "Invest in modern technology, expand market, build professional team, develop sustainable partner ecosystem"
       },
-      color: "from-orange-500 to-orange-600"
+      gradient: "from-orange-700 via-orange-600 to-orange-500"
     },
     {
-      icon: Users,
+      number: "04",
       title: {
         vi: "Giá trị cốt lõi",
         zh: "核心价值观",
@@ -66,7 +65,7 @@ export function CompanyStrategy({ locale }: CompanyStrategyProps) {
         zh: "质量 - 信誉 - 创新 - 对客户和社区的责任",
         en: "Quality - Reputation - Innovation - Responsibility to customers and community"
       },
-      color: "from-blue-500 to-blue-600"
+      gradient: "from-neutral-800 via-neutral-700 to-neutral-600"
     },
   ]
 
@@ -149,7 +148,6 @@ export function CompanyStrategy({ locale }: CompanyStrategyProps) {
           {/* Strategy Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {strategies.map((strategy, index) => {
-              const Icon = strategy.icon
               return (
                 <motion.div
                   key={index}
@@ -161,26 +159,33 @@ export function CompanyStrategy({ locale }: CompanyStrategyProps) {
                   <div className="relative h-full p-8 md:p-10 rounded-3xl overflow-hidden
                                 bg-white border border-neutral-200/50
                                 shadow-xl hover:shadow-2xl transition-all duration-500">
-                    {/* Icon with gradient background */}
+                    
+                    {/* Large Number with Gradient - Premium Typography */}
                     <div className="relative mb-6">
-                      <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${strategy.color} shadow-lg`}>
-                        <Icon className="w-8 h-8 text-white" strokeWidth={2.5} />
-                      </div>
-                      {/* Glow effect */}
-                      <div className={`absolute inset-0 bg-gradient-to-br ${strategy.color} rounded-2xl blur-xl opacity-20 
-                                    group-hover:opacity-30 transition-opacity duration-500`} />
+                      <span className={`text-7xl md:text-8xl font-black tracking-tighter
+                                     bg-gradient-to-br ${strategy.gradient} bg-clip-text text-transparent
+                                     drop-shadow-2xl`}
+                            style={{ fontFamily: "'Bebas Neue', 'Anton', 'Oswald', sans-serif" }}>
+                        {strategy.number}
+                      </span>
+                      {/* Subtle glow effect */}
+                      <div className={`absolute -inset-4 bg-gradient-to-br ${strategy.gradient} rounded-2xl blur-2xl opacity-10 
+                                    group-hover:opacity-20 transition-opacity duration-500`} />
                     </div>
 
-                    {/* Content */}
-                    <h3 className="text-2xl md:text-3xl font-display font-bold mb-4 text-neutral-900">
+                    {/* Content with enhanced typography */}
+                    <h3 className="text-2xl md:text-3xl font-display font-bold mb-4 
+                                 text-neutral-900 tracking-tight"
+                        style={{ fontFamily: "'Montserrat', 'Raleway', sans-serif", fontWeight: 800 }}>
                       {strategy.title[locale]}
                     </h3>
-                    <p className="text-base md:text-lg text-neutral-700 leading-relaxed">
+                    <p className="text-base md:text-lg text-neutral-700 leading-relaxed"
+                       style={{ fontFamily: "'Inter', 'Lato', sans-serif" }}>
                       {strategy.description[locale]}
                     </p>
 
                     {/* Decorative gradient overlay */}
-                    <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${strategy.color} 
+                    <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${strategy.gradient} 
                                   opacity-5 group-hover:opacity-10 transition-opacity duration-500 blur-2xl`} />
                   </div>
                 </motion.div>

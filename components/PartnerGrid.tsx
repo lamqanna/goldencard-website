@@ -84,7 +84,8 @@ export function PartnerGrid({ locale, category }: PartnerGridProps) {
               variants={motionVariants.fadeUp}
               className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6"
             >
-              <span className="bg-gradient-to-r from-gold-600 via-gold-500 to-teal-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-gold-800 via-gold-700 to-orange-700 bg-clip-text text-transparent
+                             drop-shadow-lg" style={{ WebkitTextStroke: '0.5px rgba(212, 175, 55, 0.1)' }}>
                 {title[locale]}
               </span>
             </motion.h2>

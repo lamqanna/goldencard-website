@@ -48,18 +48,6 @@ export function ProjectShowcase({ locale }: ProjectShowcaseProps) {
       description: locale === "vi" ? "Thẻ ATM an toàn" : locale === "zh" ? "安全ATM卡" : "Secure ATM card",
       image: "/Projects/Cards/23.png"
     },
-    {
-      id: "24",
-      title: locale === "vi" ? "Dự án thẻ thành viên" : locale === "zh" ? "会员卡项目" : "Membership Card Project",
-      description: locale === "vi" ? "Chương trình khách hàng thân thiết" : locale === "zh" ? "忠诚客户计划" : "Loyalty customer program",
-      image: "/Projects/Cards/24.png"
-    },
-    {
-      id: "25",
-      title: locale === "vi" ? "Dự án thẻ doanh nghiệp" : locale === "zh" ? "企业卡项目" : "Corporate Card Project",
-      description: locale === "vi" ? "Giải pháp cho doanh nghiệp" : locale === "zh" ? "企业解决方案" : "Enterprise solution",
-      image: "/Projects/Cards/25.png"
-    },
   ]
 
   const title = {
@@ -108,7 +96,8 @@ export function ProjectShowcase({ locale }: ProjectShowcaseProps) {
               variants={motionVariants.fadeUp}
               className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6"
             >
-              <span className="bg-gradient-to-r from-gold-600 via-gold-500 to-neutral-900 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-gold-800 via-gold-700 to-neutral-900 bg-clip-text text-transparent
+                             drop-shadow-lg" style={{ WebkitTextStroke: '0.5px rgba(212, 175, 55, 0.1)' }}>
                 {title[locale]}
               </span>
             </motion.h2>
@@ -144,28 +133,32 @@ export function ProjectShowcase({ locale }: ProjectShowcaseProps) {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                   
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent
-                                opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+                  {/* Gradient overlay - Darker for better text contrast */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-transparent
+                                opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
                   
                   {/* Success badge */}
                   <div className="absolute top-4 right-4 px-3 py-1.5 rounded-full 
-                                bg-gold-500/90 backdrop-blur-sm
+                                bg-gold-500/95 backdrop-blur-sm shadow-lg
                                 flex items-center gap-1.5">
-                    <span className="text-xs font-semibold text-white">
+                    <span className="text-xs font-semibold text-white drop-shadow-md">
                       ✓ {locale === "vi" ? "Hoàn thành" : locale === "zh" ? "已完成" : "Completed"}
                     </span>
                   </div>
                   
-                  {/* Project Info */}
+                  {/* Project Info - Enhanced text contrast */}
                   <div className="absolute inset-x-0 bottom-0 p-6 text-white">
-                    <h3 className="text-lg md:text-xl font-bold mb-2 drop-shadow-lg leading-tight">
+                    <h3 className="text-lg md:text-2xl font-black mb-2 leading-tight
+                                 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+                        style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.9), 0 0 12px rgba(0,0,0,0.5)' }}>
                       {project.title}
                     </h3>
-                    <p className="text-sm md:text-base text-white/95 leading-relaxed
+                    <p className="text-sm md:text-base font-medium leading-relaxed
                                 opacity-0 group-hover:opacity-100 
                                 transform translate-y-2 group-hover:translate-y-0
-                                transition-all duration-500 delay-75">
+                                transition-all duration-500 delay-75
+                                text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+                       style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.9)' }}>
                       {project.description}
                     </p>
                   </div>
