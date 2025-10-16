@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 
 import { Container } from "@/components/Container";
 import { Section } from "@/components/Section";
+import { SolarGallery } from "@/components/SolarGallery";
 import { getGoldenEnergy } from "@/lib/content";
 import { isLocale, type Locale } from "@/lib/i18n";
 import { buildPageMetadata } from "@/lib/seo";
@@ -26,12 +27,13 @@ export default async function GoldenEnergyPage({ params }: GoldenEnergyPageProps
   const featured = goldenEnergy?.featured_projects;
 
   return (
-    <Container className="space-y-16 py-16 sm:py-20">
-      <Section
-        title={hero?.headline ?? "GoldenEnergy"}
-        description={hero?.subheadline}
-      >
-        {hero?.trust_bullets ? (
+    <>
+      <Container className="space-y-16 py-16 sm:py-20">
+        <Section
+          title={hero?.headline ?? "GoldenEnergy"}
+          description={hero?.subheadline}
+        >
+          {hero?.trust_bullets ? (
           <ul className="space-y-3 text-sm text-foreground/80 md:text-base">
             {hero.trust_bullets.map((bullet: string) => (
               <li key={bullet} className="flex items-start gap-2">
@@ -80,7 +82,11 @@ export default async function GoldenEnergyPage({ params }: GoldenEnergyPageProps
           </div>
         </Section>
       ) : null}
-    </Container>
+      </Container>
+
+      {/* Solar Gallery Section - Full Width */}
+      <SolarGallery locale={locale} />
+    </>
   );
 }
 
