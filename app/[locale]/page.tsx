@@ -7,7 +7,6 @@ import { Section } from "@/components/Section";
 import { PremiumHero, PremiumStats } from "@/components/premium-ui";
 import { CompanyStrategy } from "@/components/CompanyStrategy";
 import { PartnerGrid } from "@/components/PartnerGrid";
-import { ProjectShowcase } from "@/components/ProjectShowcase";
 import {
   getHomeHero,
   getHomeSections,
