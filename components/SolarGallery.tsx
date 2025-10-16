@@ -1,9 +1,9 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
-import { Play } from "lucide-react"
-import { useState } from "react"
+import { ChevronLeft, ChevronRight, Sun } from "lucide-react"
+import { useState, useEffect } from "react"
 import type { Locale } from "@/lib/i18n"
 import { motionVariants } from "@/lib/motion-variants"
 
@@ -12,7 +12,26 @@ interface SolarGalleryProps {
 }
 
 export function SolarGallery({ locale }: SolarGalleryProps) {
-  const [videoPlaying, setVideoPlaying] = useState(false)
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  // Featured hero images for carousel
+  const heroImages = [
+    {
+      url: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1400&q=85",
+      title: locale === "vi" ? "Tấm pin mặt trời hiện đại" : locale === "zh" ? "现代太阳能电池板" : "Modern Solar Panels",
+      description: locale === "vi" ? "Hệ thống năng lượng sạch cho tương lai" : locale === "zh" ? "未来的清洁能源系统" : "Clean energy system for the future"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=1400&q=85",
+      title: locale === "vi" ? "Trang trại năng lượng mặt trời" : locale === "zh" ? "太阳能农场" : "Solar Energy Farm",
+      description: locale === "vi" ? "Nguồn năng lượng tái tạo bền vững" : locale === "zh" ? "可持续的可再生能源" : "Sustainable renewable energy"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1497440001374-f26997328c1b?w=1400&q=85",
+      title: locale === "vi" ? "Giải pháp năng lượng xanh" : locale === "zh" ? "绿色能源解决方案" : "Green Energy Solution",
+      description: locale === "vi" ? "Tiết kiệm chi phí, bảo vệ môi trường" : locale === "zh" ? "节省成本，保护环境" : "Cost savings, environmental protection"
+    },
+  ]
 
   const images = [
     {
@@ -47,14 +66,52 @@ export function SolarGallery({ locale }: SolarGalleryProps) {
     },
   ]
 
-  const videoUrl = "https://www.youtube.com/embed/5530I_pYjbo" // Sample solar energy video
+  // Auto-advance carousel
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroImages.length)
+    }, 5000) // Change slide every 5 seconds
+
+    return () => clearInterval(timer)
+  }, [heroImages.length])
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % heroImages.length)
+  }
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + heroImages.length) % heroImages.length)
+  }
 
   return (
-    <section className="relative py-20 bg-gradient-to-b from-white via-teal-50/30 to-white overflow-hidden">
-      {/* Background decoration */}
+    <section className="relative py-20 overflow-hidden">
+      {/* Premium background with sunrise and nature */}
+      <div className="absolute inset-0 bg-gradient-to-br from-orange-50/80 via-yellow-50/60 to-teal-50/80" />
+      
+      {/* Sunrise background image */}
+      <div className="absolute inset-0 opacity-10">
+        <Image
+          src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=1920&q=80"
+          alt="Sunrise with trees"
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
+
+      {/* Animated sun rays */}
+      <div className="absolute top-10 right-10 w-96 h-96 opacity-20">
+        <div className="absolute inset-0 bg-gradient-radial from-yellow-400/40 via-orange-300/20 to-transparent rounded-full blur-3xl animate-pulse" />
+      </div>
+
+      {/* Green nature accents */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-teal-100/30 to-transparent" />
+      
+      {/* Floating light particles */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-teal-100/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gold-100/20 rounded-full blur-3xl" />
+        <div className="absolute top-20 left-10 w-64 h-64 bg-yellow-200/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '0s', animationDuration: '4s' }} />
+        <div className="absolute bottom-32 right-20 w-80 h-80 bg-teal-200/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s', animationDuration: '5s' }} />
+        <div className="absolute top-40 right-32 w-48 h-48 bg-orange-200/15 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s', animationDuration: '6s' }} />
       </div>
 
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
@@ -66,96 +123,148 @@ export function SolarGallery({ locale }: SolarGalleryProps) {
           className="max-w-6xl mx-auto"
         >
           {/* Section Header */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-16">
             <motion.div
               variants={motionVariants.fadeUpScale}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full 
-                         glass shadow-sm mb-4 border border-teal-200/50"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full 
+                         bg-gradient-to-r from-yellow-50 to-teal-50
+                         border border-yellow-200/50 shadow-lg mb-6"
             >
-              <span className="w-2 h-2 bg-teal-500 rounded-full animate-pulse" />
-              <span className="text-sm font-medium text-neutral-700">
-                {locale === "vi" ? "Thư viện hình ảnh" : locale === "zh" ? "图库展示" : "Image Gallery"}
+              <Sun className="w-4 h-4 text-yellow-600 animate-pulse" />
+              <span className="text-sm font-semibold text-neutral-800">
+                {locale === "vi" ? "Năng lượng xanh - Tương lai bền vững" : locale === "zh" ? "绿色能源 - 可持续未来" : "Green Energy - Sustainable Future"}
               </span>
             </motion.div>
             
             <motion.h2
               variants={motionVariants.fadeUp}
-              className="text-4xl md:text-5xl font-display font-bold text-gradient-elegant mb-4"
+              className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6"
             >
-              {locale === "vi" 
-                ? "Hệ thống năng lượng mặt trời" 
-                : locale === "zh" 
-                ? "太阳能系统展示" 
-                : "Solar Energy Systems"}
+              <span className="bg-gradient-to-r from-yellow-600 via-orange-500 to-teal-600 bg-clip-text text-transparent">
+                {locale === "vi" 
+                  ? "Hệ thống năng lượng mặt trời" 
+                  : locale === "zh" 
+                  ? "太阳能系统展示" 
+                  : "Solar Energy Systems"}
+              </span>
             </motion.h2>
             
             <motion.p
               variants={motionVariants.fadeUp}
-              className="text-lg text-neutral-600 max-w-2xl mx-auto"
+              className="text-lg md:text-xl text-neutral-700 max-w-3xl mx-auto leading-relaxed"
             >
               {locale === "vi"
-                ? "Khám phá các dự án năng lượng mặt trời hiện đại và bền vững"
+                ? "Khám phá các dự án năng lượng mặt trời hiện đại, tiết kiệm chi phí và thân thiện với môi trường"
                 : locale === "zh"
-                ? "探索现代化和可持续的太阳能项目"
-                : "Explore modern and sustainable solar energy projects"}
+                ? "探索现代化、节约成本且环保的太阳能项目"
+                : "Explore modern, cost-effective and eco-friendly solar energy projects"}
             </motion.p>
           </div>
 
-          {/* Video Section */}
+          {/* Image Carousel Section */}
           <motion.div
             variants={motionVariants.fadeUpScale}
-            className="mb-12 rounded-2xl overflow-hidden shadow-xl"
+            className="mb-16"
           >
-            <div className="relative aspect-video bg-neutral-900">
-              {!videoPlaying ? (
-                <div className="absolute inset-0 flex items-center justify-center">
+            <div className="relative aspect-[21/9] md:aspect-[16/7] rounded-3xl overflow-hidden shadow-2xl">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentSlide}
+                  initial={{ opacity: 0, scale: 1.1 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.7, ease: "easeInOut" }}
+                  className="absolute inset-0"
+                >
                   <Image
-                    src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1200&q=80"
-                    alt="Solar Energy Video Thumbnail"
+                    src={heroImages[currentSlide].url}
+                    alt={heroImages[currentSlide].title}
                     fill
                     className="object-cover"
+                    priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
                   />
+                  
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  
+                  {/* Text overlay */}
+                  <div className="absolute inset-x-0 bottom-0 p-8 md:p-12">
+                    <motion.h3
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3 }}
+                      className="text-2xl md:text-4xl font-bold text-white mb-3 drop-shadow-lg"
+                    >
+                      {heroImages[currentSlide].title}
+                    </motion.h3>
+                    <motion.p
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.4 }}
+                      className="text-base md:text-lg text-white/95 drop-shadow-md max-w-2xl"
+                    >
+                      {heroImages[currentSlide].description}
+                    </motion.p>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Navigation buttons */}
+              <button
+                onClick={prevSlide}
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full 
+                         bg-white/90 backdrop-blur-sm shadow-xl
+                         flex items-center justify-center
+                         hover:bg-white hover:scale-110 transition-all duration-300
+                         z-10 group"
+                aria-label="Previous slide"
+              >
+                <ChevronLeft className="w-6 h-6 text-neutral-800 group-hover:text-teal-600 transition-colors" />
+              </button>
+              
+              <button
+                onClick={nextSlide}
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full 
+                         bg-white/90 backdrop-blur-sm shadow-xl
+                         flex items-center justify-center
+                         hover:bg-white hover:scale-110 transition-all duration-300
+                         z-10 group"
+                aria-label="Next slide"
+              >
+                <ChevronRight className="w-6 h-6 text-neutral-800 group-hover:text-teal-600 transition-colors" />
+              </button>
+
+              {/* Slide indicators */}
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                {heroImages.map((_, index) => (
                   <button
-                    onClick={() => setVideoPlaying(true)}
-                    className="relative z-10 flex items-center gap-3 px-8 py-4 
-                             bg-white/95 backdrop-blur-sm rounded-full
-                             shadow-xl hover:shadow-2xl transition-all duration-300
-                             hover:scale-105 group"
-                  >
-                    <Play className="w-6 h-6 text-teal-600 fill-teal-600 
-                                   group-hover:scale-110 transition-transform" />
-                    <span className="font-semibold text-neutral-900">
-                      {locale === "vi" 
-                        ? "Xem video giới thiệu" 
-                        : locale === "zh" 
-                        ? "观看介绍视频" 
-                        : "Watch Introduction Video"}
-                    </span>
-                  </button>
-                </div>
-              ) : (
-                <iframe
-                  src={videoUrl}
-                  title="Solar Energy Video"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="absolute inset-0 w-full h-full"
-                />
-              )}
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                      index === currentSlide 
+                        ? 'bg-white w-8' 
+                        : 'bg-white/50 hover:bg-white/75'
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           </motion.div>
 
           {/* Image Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {images.map((image, index) => (
               <motion.div
                 key={index}
                 variants={motionVariants.fadeUpScale}
-                whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                className="group relative rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500"
+                whileHover={{ y: -12, transition: { duration: 0.4 } }}
+                className="group relative rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500
+                         bg-white border border-neutral-200/50"
               >
                 {/* Image */}
-                <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100">
+                <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-yellow-50 to-teal-50">
                   <Image
                     src={image.url}
                     alt={image.title}
@@ -164,26 +273,38 @@ export function SolarGallery({ locale }: SolarGalleryProps) {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                   
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent
-                                opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+                  {/* Premium overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent
+                                opacity-70 group-hover:opacity-85 transition-opacity duration-500" />
+                  
+                  {/* Green energy badge */}
+                  <div className="absolute top-4 right-4 px-3 py-1.5 rounded-full 
+                                bg-teal-500/90 backdrop-blur-sm
+                                flex items-center gap-1.5 opacity-0 group-hover:opacity-100
+                                transition-opacity duration-500">
+                    <Sun className="w-3.5 h-3.5 text-white" />
+                    <span className="text-xs font-semibold text-white">
+                      {locale === "vi" ? "Xanh" : locale === "zh" ? "绿色" : "Green"}
+                    </span>
+                  </div>
                   
                   {/* Text Content */}
-                  <div className="absolute inset-x-0 bottom-0 p-6 text-white transform 
-                                translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                    <h3 className="text-lg font-semibold mb-2 drop-shadow-lg">
+                  <div className="absolute inset-x-0 bottom-0 p-6 text-white">
+                    <h3 className="text-lg md:text-xl font-bold mb-2 drop-shadow-lg leading-tight">
                       {image.title}
                     </h3>
-                    <p className="text-sm text-white/90 opacity-0 group-hover:opacity-100 
-                                transition-opacity duration-500 delay-100">
+                    <p className="text-sm md:text-base text-white/95 leading-relaxed
+                                opacity-0 group-hover:opacity-100 
+                                transform translate-y-2 group-hover:translate-y-0
+                                transition-all duration-500 delay-75">
                       {image.description}
                     </p>
                   </div>
                   
                   {/* Shine effect */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent 
-                                  translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent 
+                                  translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1500" />
                   </div>
                 </div>
               </motion.div>
@@ -193,32 +314,48 @@ export function SolarGallery({ locale }: SolarGalleryProps) {
           {/* Stats Footer */}
           <motion.div
             variants={motionVariants.fadeUpScale}
-            className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6"
+            className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8"
           >
             {[
               { 
                 value: "500+", 
-                label: locale === "vi" ? "Dự án hoàn thành" : locale === "zh" ? "已完成项目" : "Projects Completed" 
+                label: locale === "vi" ? "Dự án hoàn thành" : locale === "zh" ? "已完成项目" : "Projects Completed",
+                icon: "🏆"
               },
               { 
                 value: "50MW", 
-                label: locale === "vi" ? "Tổng công suất" : locale === "zh" ? "总容量" : "Total Capacity" 
+                label: locale === "vi" ? "Tổng công suất" : locale === "zh" ? "总容量" : "Total Capacity",
+                icon: "⚡"
               },
               { 
                 value: "15+", 
-                label: locale === "vi" ? "Năm kinh nghiệm" : locale === "zh" ? "年经验" : "Years Experience" 
+                label: locale === "vi" ? "Năm kinh nghiệm" : locale === "zh" ? "年经验" : "Years Experience",
+                icon: "📅"
               },
               { 
                 value: "98%", 
-                label: locale === "vi" ? "Khách hàng hài lòng" : locale === "zh" ? "客户满意度" : "Client Satisfaction" 
+                label: locale === "vi" ? "Khách hàng hài lòng" : locale === "zh" ? "客户满意度" : "Client Satisfaction",
+                icon: "⭐"
               },
             ].map((stat, index) => (
-              <div key={index} className="text-center p-6 rounded-xl glass border border-teal-200/30">
-                <div className="text-3xl md:text-4xl font-bold text-gradient-elegant mb-2">
+              <motion.div 
+                key={index} 
+                className="text-center p-6 md:p-8 rounded-2xl 
+                         bg-gradient-to-br from-white to-yellow-50/50
+                         border border-yellow-200/40 shadow-lg hover:shadow-xl
+                         transition-all duration-300 hover:scale-105"
+                whileHover={{ y: -4 }}
+              >
+                <div className="text-3xl mb-3">{stat.icon}</div>
+                <div className="text-4xl md:text-5xl font-bold mb-3
+                              bg-gradient-to-r from-yellow-600 via-orange-500 to-teal-600 
+                              bg-clip-text text-transparent">
                   {stat.value}
                 </div>
-                <div className="text-sm text-neutral-600">{stat.label}</div>
-              </div>
+                <div className="text-sm md:text-base font-medium text-neutral-700 leading-tight">
+                  {stat.label}
+                </div>
+              </motion.div>
             ))}
           </motion.div>
         </motion.div>
