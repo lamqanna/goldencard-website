@@ -5,7 +5,9 @@ import { Container } from "@/components/Container";
 import { ContactForm } from "@/components/ContactForm";
 import { Section } from "@/components/Section";
 import { PremiumHero, PremiumStats } from "@/components/premium-ui";
-// import { PartnerLogos } from "@/components/PartnerLogos"; // Temporarily disabled
+import { CompanyStrategy } from "@/components/CompanyStrategy";
+import { PartnerGrid } from "@/components/PartnerGrid";
+import { ProjectShowcase } from "@/components/ProjectShowcase";
 import {
   getHomeHero,
   getHomeSections,
@@ -102,8 +104,17 @@ export default async function HomePage({ params }: HomePageProps) {
         </Section>
       </Container>
 
-      {/* Partner Logos Section - Temporarily disabled until images are added */}
-      {/* <PartnerLogos locale={locale} /> */}
+      {/* Company Strategy Section */}
+      <CompanyStrategy locale={locale} />
+
+      {/* Partners Section - Cards */}
+      <PartnerGrid locale={locale} category="cards" />
+
+      {/* Featured Projects */}
+      <ProjectShowcase locale={locale} />
+
+      {/* Partners Section - Solar */}
+      <PartnerGrid locale={locale} category="solar" />
 
       <Container className="space-y-20 py-20 sm:py-24 lg:py-28">
         <Section
