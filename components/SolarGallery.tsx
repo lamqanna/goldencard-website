@@ -66,12 +66,11 @@ export function SolarGallery({ locale }: SolarGalleryProps) {
     },
   ]
 
-  // Auto-advance carousel
+  // Auto-advance carousel every 5 seconds
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroImages.length)
-    }, 5000) // Change slide every 5 seconds
-
+    }, 5000)
     return () => clearInterval(timer)
   }, [heroImages.length])
 
@@ -161,7 +160,7 @@ export function SolarGallery({ locale }: SolarGalleryProps) {
             </motion.p>
           </div>
 
-          {/* Image Carousel Section */}
+          {/* Image Carousel Section - Replaces video */}
           <motion.div
             variants={motionVariants.fadeUpScale}
             className="mb-16"
