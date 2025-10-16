@@ -7,7 +7,7 @@ import { Navbar } from "@/components/Navbar";
 import { getSitewide } from "@/lib/content";
 import { defaultLocale, locales, type Locale } from "@/lib/i18n";
 import { getPrimaryNavigation } from "@/lib/navigation";
-import { inter, montserrat } from "@/app/fonts";
+import { playfairDisplay, montserrat } from "@/app/fonts";
 
 interface LocaleLayoutProps {
   children: ReactNode;
@@ -33,13 +33,14 @@ export default async function LocaleLayout({
   const navItems = getPrimaryNavigation(locale);
 
   // Choose font based on locale
-  const fontClass = locale === "vi" ? inter.className : montserrat.className;
+  const fontClass = locale === "vi" ? playfairDisplay.className : montserrat.className;
+  const fontWeight = locale === "vi" ? 400 : 500; // Regular 400 for Vietnamese, Medium 500 for English
 
   return (
     <>
       <LocaleLangSetter locale={locale} />
       <div className={`flex min-h-screen flex-col bg-background text-foreground ${fontClass}`}
-           style={{ fontWeight: 500 }}>
+           style={{ fontWeight }}>
         <Navbar locale={locale} navItems={navItems} tagline={sitewide.tagline} />
         <main className="flex-1">{children}</main>
         <Footer locale={locale} navItems={navItems} trustLines={sitewide.trust_lines} />
