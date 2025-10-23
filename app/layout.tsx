@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { bodyFont, headingFont } from "./fonts";
 import "./globals.css";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
@@ -19,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="vi" suppressHydrationWarning>
       <body className={`${bodyFont.variable} ${headingFont.variable}`}>
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
