@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Target, Eye, Heart, Users } from 'lucide-react'
 import { motionVariants } from '@/lib/motion-variants'
 
@@ -135,7 +136,7 @@ export default function PremiumAbout() {
 
             {/* CTA */}
             <div className="pt-4">
-              <a
+              <Link
                 href="/gioi-thieu"
                 className="inline-flex items-center gap-2 text-gold-600 hover:text-gold-700 font-semibold group"
               >
@@ -147,7 +148,7 @@ export default function PremiumAbout() {
                 >
                   →
                 </motion.span>
-              </a>
+              </Link>
             </div>
           </motion.div>
         </div>

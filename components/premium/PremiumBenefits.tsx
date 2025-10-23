@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { 
   TrendingDown, 
@@ -162,12 +163,12 @@ export default function PremiumBenefits() {
                 Đội ngũ chuyên gia sẵn sàng tư vấn miễn phí và khảo sát tận nơi.
               </p>
             </div>
-            <a
+            <Link
               href="/lien-he"
               className="shrink-0 px-8 py-4 bg-gold-600 hover:bg-gold-700 text-white rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
             >
               Nhận tư vấn ngay
-            </a>
+            </Link>
           </div>
         </motion.div>
       </div>
