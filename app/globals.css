@@ -9,6 +9,30 @@
   --gc-gold-50: #fdfbf3;
   --gc-gold-100: #faf6e6;
   
+  /* Complete gold palette for premium design */
+  --gold-50: #FDFBF7;
+  --gold-100: #F8F4E8;
+  --gold-200: #F0E6C8;
+  --gold-300: #E8D8A8;
+  --gold-400: #E0CA88;
+  --gold-500: #D4AF37;
+  --gold-600: #B8932F;
+  --gold-700: #9C7727;
+  --gold-800: #6D5419;
+  --gold-900: #3E2F0E;
+  
+  /* Complete gray palette */
+  --gray-50: #F8F7F4;
+  --gray-100: #E8E6E1;
+  --gray-200: #D1CDC3;
+  --gray-300: #BAB4A5;
+  --gray-400: #A39B87;
+  --gray-500: #8C8269;
+  --gray-600: #75694B;
+  --gray-700: #5E502D;
+  --gray-800: #2D2D2D;
+  --gray-900: #1A1A1A;
+  
   /* Enhanced base colors */
   --gc-bg: #fafafa;
   --gc-surface: #ffffff;

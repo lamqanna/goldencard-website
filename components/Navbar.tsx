@@ -15,19 +15,17 @@ export function Navbar({ locale, navItems, tagline }: NavbarProps) {
   return (
     <header className="sticky top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60" role="banner">
       <Container className="flex items-center justify-between gap-4 py-4 lg:py-5">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 min-w-0">
           <Link 
             href={`/${locale}`} 
-            className="group relative inline-flex items-center gap-2 text-xl font-semibold tracking-tight text-foreground transition-colors hover:text-primary" 
-            aria-label="GoldenCard home"
+            className="group relative inline-flex items-center gap-2 text-xl font-semibold tracking-tight text-foreground transition-colors hover:text-primary shrink-0" 
+            aria-label="Golden Energy home"
           >
-            <span className="relative">
-              GoldenCard
+            <span className="relative whitespace-nowrap">
+              Golden Energy
               <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-gradient-to-r from-primary to-accent transition-all duration-300 group-hover:w-full" />
             </span>
           </Link>
-          <span className="hidden text-xs text-muted-foreground sm:inline">|</span>
-          <p className="hidden text-xs text-muted-foreground sm:inline">{tagline}</p>
         </div>
         
         <div className="flex items-center gap-6">

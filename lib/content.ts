@@ -23,13 +23,13 @@ export function getSitewide(locale: Locale) {
   }
   
   const taglines: Record<Locale, string> = {
-    vi: "Giải pháp thẻ thông minh và năng lượng xanh",
-    en: "Smart Card and Green Energy Solutions",
-    zh: "智能卡和绿色能源解决方案",
+    vi: "Giải pháp điện mặt trời hàng đầu Việt Nam",
+    en: "Leading Solar Energy Solutions in Vietnam",
+    zh: "越南领先的太阳能解决方案",
   };
   
   return {
-    company_name: "GoldenCard",
+    company_name: "Golden Energy Vietnam",
     tagline: taglines[locale],
     trust_lines: hero?.trust_bullets || []
   };

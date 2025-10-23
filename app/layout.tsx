@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import { bodyFont, headingFont } from "./fonts";
 import "./globals.css";
-import { Providers } from "./providers";
+// import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
   title: {
-    default: "GoldenCard",
-    template: "%s | GoldenCard",
+    default: "Golden Energy Vietnam - Giải Pháp Điện Mặt Trời Hàng Đầu",
+    template: "%s | Golden Energy Vietnam",
   },
-  description: "Magnetic card, IT, and solar solutions for modern enterprises.",
+  description: "Giải pháp điện mặt trời chuyên nghiệp với hơn 500+ dự án thành công. Tiết kiệm chi phí, bảo vệ môi trường, đầu tư bền vững. Đối tác Huawei & Growatt.",
 };
 
 export default function RootLayout({
@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="vi" suppressHydrationWarning>
       <body className={`${bodyFont.variable} ${headingFont.variable}`}>
-        <Providers>{children}</Providers>
+        {children}
       </body>
     </html>
   );

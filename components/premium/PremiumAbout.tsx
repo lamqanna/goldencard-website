@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Target, Eye, Heart, Users } from 'lucide-react'
+import { Target, Eye, Heart, Users, Award, ArrowRight } from 'lucide-react'
 import { motionVariants } from '@/lib/motion-variants'
 
 const companyValues = [
@@ -46,14 +46,23 @@ export default function PremiumAbout() {
             className="relative"
           >
             {/* Main Image */}
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
-              <Image
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-gold-200 via-amber-100 to-gold-50">
+              {/* Placeholder - Add real image later */}
+              {/* <Image
                 src="/images/about-golden-energy.jpg"
                 alt="Golden Energy Vietnam Team"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
-              />
+              /> */}
+              
+              {/* Decorative Elements */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center space-y-4 p-8">
+                  <Award className="w-24 h-24 text-gold-400 mx-auto opacity-40" />
+                  <p className="text-gold-600 font-medium text-lg">Golden Energy Vietnam</p>
+                </div>
+              </div>
             </div>
 
             {/* Stats Card Overlay */}

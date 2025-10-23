@@ -116,18 +116,32 @@ export default function PremiumHero() {
             className="relative"
           >
             {/* Floating Cards */}
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
-              <Image
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-gold-100 via-gold-50 to-amber-50">
+              {/* Placeholder - Add real image later */}
+              {/* <Image
                 src="/images/hero-solar-panels.jpg"
                 alt="Solar Panel Installation"
                 fill
                 className="object-cover"
                 priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
-              />
+              /> */}
+              
+              {/* Decorative Pattern */}
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute inset-0" style={{
+                  backgroundImage: `radial-gradient(circle at 1px 1px, rgb(212 175 55) 1px, transparent 0)`,
+                  backgroundSize: '32px 32px'
+                }} />
+              </div>
               
               {/* Overlay Gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 via-transparent to-transparent" />
+              
+              {/* Placeholder Icon */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <Sun className="w-32 h-32 text-gold-400 opacity-40" />
+              </div>
             </div>
 
             {/* Floating Card - Energy Saved */}

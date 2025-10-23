@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { MapPin, Calendar, Zap, ArrowUpRight } from 'lucide-react'
+import { MapPin, Calendar, Zap, ArrowUpRight, Sun } from 'lucide-react'
 import { motionVariants } from '@/lib/motion-variants'
 
 const featuredProjects = [
@@ -132,14 +132,20 @@ function ProjectCard({ project, index }: { project: typeof featuredProjects[0], 
       className={`group relative ${isLarge ? 'md:col-span-2' : ''}`}
     >
       <Link href={`/du-an/${project.id}`}>
-        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100">
-          <Image
+        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-gold-100 via-amber-50 to-gold-50">
+          {/* Placeholder - Add real images later */}
+          {/* <Image
             src={project.image}
             alt={project.title}
             fill
             className="object-cover transition-transform duration-700 group-hover:scale-110"
             sizes={isLarge ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
-          />
+          /> */}
+          
+          {/* Placeholder Icon */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Sun className="w-20 h-20 text-gold-300 opacity-40" />
+          </div>
           
           {/* Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
