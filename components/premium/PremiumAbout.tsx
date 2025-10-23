@@ -31,9 +31,22 @@ const companyValues = [
 
 export default function PremiumAbout() {
   return (
-    <section id="about" className="py-24 lg:py-32 bg-white relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gold-50/50 via-white to-white" />
+    <section id="about" className="py-24 lg:py-32 relative overflow-hidden">
+      {/* Luxury Background with Pattern */}
+      <div className="absolute inset-0">
+        {/* Base gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gold-50/30" />
+        
+        {/* Decorative pattern overlay */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: `url('data:image/svg+xml,<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23d4af37" fill-opacity="1"><path d="M0 0h40v40H0V0zm40 40h40v40H40V40z" fill-opacity=".5"/></g></g></svg>')`,
+          backgroundSize: '80px 80px'
+        }} />
+        
+        {/* Gradient spheres for depth */}
+        <div className="absolute top-20 right-1/4 w-96 h-96 bg-gold-200/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-1/4 w-96 h-96 bg-amber-200/20 rounded-full blur-3xl" />
+      </div>
       
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
@@ -45,33 +58,40 @@ export default function PremiumAbout() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            {/* Main Image */}
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-gold-200 via-amber-100 to-gold-50">
-              {/* Placeholder - Add real image later */}
-              {/* <Image
-                src="/images/about-golden-energy.jpg"
-                alt="Golden Energy Vietnam Team"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              /> */}
+            {/* Main Image with Luxury Treatment */}
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+              {/* Gradient background with premium feel */}
+              <div className="absolute inset-0 bg-gradient-to-br from-gold-500 via-amber-600 to-gold-700">
+                {/* Overlay pattern */}
+                <div className="absolute inset-0 opacity-30" style={{
+                  backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,.05) 10px, rgba(255,255,255,.05) 20px)`
+                }} />
+                
+                {/* Light effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/20" />
+              </div>
               
-              {/* Decorative Elements */}
+              {/* Central content */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center space-y-4 p-8">
-                  <Award className="w-24 h-24 text-gold-400 mx-auto opacity-40" />
-                  <p className="text-gold-600 font-medium text-lg">Golden Energy Vietnam</p>
+                  {/* Glowing badge */}
+                  <div className="relative inline-block">
+                    <div className="absolute inset-0 bg-white/40 blur-xl rounded-full" />
+                    <Award className="w-24 h-24 text-white mx-auto relative z-10 drop-shadow-2xl" />
+                  </div>
+                  <p className="text-white font-semibold text-xl drop-shadow-lg">Golden Energy Vietnam</p>
+                  <p className="text-white/90 text-sm">Đối tác tin cậy của bạn</p>
                 </div>
               </div>
             </div>
 
-            {/* Stats Card Overlay */}
+            {/* Stats Card Overlay with Glass Effect */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-2xl p-8 border border-gray-100"
+              className="absolute -bottom-6 -right-6 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl p-8 border border-white/50"
             >
               <div className="grid grid-cols-2 gap-6">
                 <div>

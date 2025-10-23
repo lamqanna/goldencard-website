@@ -33,7 +33,6 @@ export function PartnerGrid({ locale, category }: PartnerGridProps) {
     { id: "36", name: "Solar Partner 2", image: "/partners/Solar/36.png", category: "solar" },
     { id: "37", name: "Solar Partner 3", image: "/partners/Solar/37.png", category: "solar" },
     { id: "38", name: "Solar Partner 4", image: "/partners/Solar/38.png", category: "solar" },
-    { id: "39", name: "Solar Partner 5", image: "/partners/Solar/39.png", category: "solar" },
   ]
 
   const partners = category === "cards" ? cardPartners : solarPartners

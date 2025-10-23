@@ -1,6 +1,14 @@
-import { Playfair_Display, Montserrat } from "next/font/google";
+import { Playfair_Display, Montserrat, Inter } from "next/font/google";
 
-// Playfair Display for Vietnamese (elegant serif)
+// Inter for Vietnamese body text (clean, readable sans-serif)
+export const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin", "vietnamese"],
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+// Playfair Display for headings (elegant serif)
 export const playfairDisplay = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin", "vietnamese"],
@@ -16,6 +24,6 @@ export const montserrat = Montserrat({
   weight: ["400", "500", "600", "700", "800"],
 });
 
-// Keep for backwards compatibility
-export const bodyFont = playfairDisplay;
-export const headingFont = montserrat;
+// Main fonts
+export const bodyFont = inter;
+export const headingFont = playfairDisplay;

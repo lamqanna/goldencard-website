@@ -67,7 +67,24 @@ const featuredProjects = [
 
 export default function PremiumProjects() {
   return (
-    <section id="projects" className="py-24 lg:py-32 bg-gradient-to-b from-white via-gold-50/30 to-white relative overflow-hidden">
+    <section id="projects" className="py-24 lg:py-32 relative overflow-hidden">
+      {/* Elegant Background */}
+      <div className="absolute inset-0">
+        {/* Dark to light gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900" />
+        
+        {/* Animated light beams */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-1/4 w-1/2 h-1/2 bg-gradient-radial from-gold-500/20 via-gold-600/10 to-transparent blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-1/2 h-1/2 bg-gradient-radial from-amber-500/20 via-amber-600/10 to-transparent blur-3xl" />
+        </div>
+        
+        {/* Subtle pattern */}
+        <div className="absolute inset-0 opacity-[0.02]" style={{
+          backgroundImage: `url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="1"><path d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/></g></g></svg>')`,
+          backgroundSize: '60px 60px'
+        }} />
+      </div>
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <motion.div
@@ -77,13 +94,13 @@ export default function PremiumProjects() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="inline-block text-sm font-semibold text-gold-600 tracking-wider uppercase mb-4">
+          <span className="inline-block text-sm font-semibold text-gold-400 tracking-wider uppercase mb-4">
             Dự án tiêu biểu
           </span>
-          <h2 className="font-playfair text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="font-playfair text-4xl lg:text-5xl font-bold text-white mb-6 drop-shadow-lg">
             Hơn 500+ Dự Án Thành Công
           </h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-gray-300">
             Từ hệ thống gia đình đến nhà máy điện mặt trời quy mô lớn,
             chúng tôi mang đến giải pháp tối ưu cho mọi nhu cầu.
           </p>
@@ -132,57 +149,67 @@ function ProjectCard({ project, index }: { project: typeof featuredProjects[0], 
       className={`group relative ${isLarge ? 'md:col-span-2' : ''}`}
     >
       <Link href={`/du-an/${project.id}`}>
-        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-gold-100 via-amber-50 to-gold-50">
-          {/* Placeholder - Add real images later */}
-          {/* <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            className="object-cover transition-transform duration-700 group-hover:scale-110"
-            sizes={isLarge ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
-          /> */}
-          
-          {/* Placeholder Icon */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <Sun className="w-20 h-20 text-gold-300 opacity-40" />
+        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+          {/* Luxury Gradient Background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-gold-600 via-amber-700 to-gold-800">
+            {/* Diagonal stripes pattern */}
+            <div className="absolute inset-0 opacity-20" style={{
+              backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,.1) 20px, rgba(255,255,255,.1) 40px)`
+            }} />
+            
+            {/* Radial glow effect */}
+            <div className="absolute inset-0 bg-gradient-radial from-white/20 via-transparent to-transparent" />
           </div>
           
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
+          {/* Decorative Icon with Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-30 group-hover:opacity-50 transition-opacity duration-500">
+            <div className="relative">
+              <div className="absolute inset-0 bg-white/40 blur-2xl rounded-full" />
+              <Sun className="w-20 h-20 text-white relative z-10" />
+            </div>
+          </div>
+          
+          {/* Overlay gradient on hover */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
 
-          {/* Category Badge */}
+          {/* Category Badge with Glass Effect */}
           <div className="absolute top-4 left-4">
-            <span className="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-semibold text-gray-900">
+            <span className="px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-medium rounded-full">
               {project.category}
             </span>
+            {project.featured && (
+              <span className="ml-2 inline-block px-3 py-1 bg-gold-500/90 backdrop-blur-sm text-white text-xs font-bold rounded-full">
+                ⭐ NỔI BẬT
+              </span>
+            )}
           </div>
 
-          {/* Arrow Icon */}
+          {/* Arrow Icon with Gold Accent */}
           <motion.div
-            className="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            className="absolute top-4 right-4 w-10 h-10 bg-gold-500 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg"
             whileHover={{ scale: 1.1, rotate: 45 }}
           >
-            <ArrowUpRight className="w-5 h-5 text-gray-900" />
+            <ArrowUpRight className="w-5 h-5 text-white" />
           </motion.div>
 
-          {/* Content */}
+          {/* Content with Enhanced Contrast */}
           <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-            <h3 className="font-playfair text-xl lg:text-2xl font-bold mb-3 group-hover:text-gold-300 transition-colors">
+            <h3 className="font-playfair text-xl lg:text-2xl font-bold mb-3 group-hover:text-gold-300 transition-colors drop-shadow-lg">
               {project.title}
             </h3>
             
-            <div className="flex flex-wrap items-center gap-4 text-sm text-white/90">
+            <div className="flex flex-wrap items-center gap-4 text-sm text-gray-200">
               <div className="flex items-center gap-1.5">
-                <MapPin className="w-4 h-4" />
+                <MapPin className="w-4 h-4 text-gold-400" />
                 <span>{project.location}</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <Calendar className="w-4 h-4" />
+                <Calendar className="w-4 h-4 text-gold-400" />
                 <span>{project.date}</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <Zap className="w-4 h-4 text-gold-400" />
-                <span className="font-semibold">{project.capacity}</span>
+                <span className="font-semibold text-white">{project.capacity}</span>
               </div>
             </div>
           </div>

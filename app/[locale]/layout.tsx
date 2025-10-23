@@ -32,15 +32,13 @@ export default async function LocaleLayout({
   const sitewide = getSitewide(locale);
   const navItems = getPrimaryNavigation(locale);
 
-  // Choose font based on locale
+  // Choose font based on locale - Playfair Display for Vietnamese, Montserrat for English
   const fontClass = locale === "vi" ? playfairDisplay.className : montserrat.className;
-  const fontWeight = locale === "vi" ? 400 : 500; // Regular 400 for Vietnamese, Medium 500 for English
 
   return (
     <>
       <LocaleLangSetter locale={locale} />
-      <div className={`flex min-h-screen flex-col bg-background text-foreground ${fontClass}`}
-           style={{ fontWeight }}>
+      <div className={`flex min-h-screen flex-col bg-background text-foreground ${fontClass}`}>
         <Navbar locale={locale} navItems={navItems} tagline={sitewide.tagline} />
         <main className="flex-1">{children}</main>
         <Footer locale={locale} navItems={navItems} trustLines={sitewide.trust_lines} />
